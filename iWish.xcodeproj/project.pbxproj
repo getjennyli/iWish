@@ -1,0 +1,522 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		22B4CC921C7908BE0041C314 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4CC911C7908BE0041C314 /* AppDelegate.swift */; };
+		22B4CC941C7908BE0041C314 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4CC931C7908BE0041C314 /* ViewController.swift */; };
+		22B4CC971C7908BE0041C314 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B4CC951C7908BE0041C314 /* Main.storyboard */; };
+		22B4CC9A1C7908BE0041C314 /* iWish.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22B4CC981C7908BE0041C314 /* iWish.xcdatamodeld */; };
+		22B4CC9C1C7908BE0041C314 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22B4CC9B1C7908BE0041C314 /* Assets.xcassets */; };
+		22B4CC9F1C7908BE0041C314 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B4CC9D1C7908BE0041C314 /* LaunchScreen.storyboard */; };
+		22B4CCAA1C7908BE0041C314 /* iWishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4CCA91C7908BE0041C314 /* iWishTests.swift */; };
+		22B4CCB51C7908BE0041C314 /* iWishUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4CCB41C7908BE0041C314 /* iWishUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		22B4CCA61C7908BE0041C314 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 22B4CC861C7908BD0041C314 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 22B4CC8D1C7908BD0041C314;
+			remoteInfo = iWish;
+		};
+		22B4CCB11C7908BE0041C314 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 22B4CC861C7908BD0041C314 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 22B4CC8D1C7908BD0041C314;
+			remoteInfo = iWish;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		22B4CC8E1C7908BE0041C314 /* iWish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWish.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22B4CC911C7908BE0041C314 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		22B4CC931C7908BE0041C314 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		22B4CC961C7908BE0041C314 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		22B4CC991C7908BE0041C314 /* iWish.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iWish.xcdatamodel; sourceTree = "<group>"; };
+		22B4CC9B1C7908BE0041C314 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		22B4CC9E1C7908BE0041C314 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		22B4CCA01C7908BE0041C314 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22B4CCA51C7908BE0041C314 /* iWishTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iWishTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		22B4CCA91C7908BE0041C314 /* iWishTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iWishTests.swift; sourceTree = "<group>"; };
+		22B4CCAB1C7908BE0041C314 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22B4CCB01C7908BE0041C314 /* iWishUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iWishUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		22B4CCB41C7908BE0041C314 /* iWishUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iWishUITests.swift; sourceTree = "<group>"; };
+		22B4CCB61C7908BE0041C314 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		22B4CC8B1C7908BD0041C314 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22B4CCA21C7908BE0041C314 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22B4CCAD1C7908BE0041C314 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		22B4CC851C7908BD0041C314 = {
+			isa = PBXGroup;
+			children = (
+				22B4CC901C7908BE0041C314 /* iWish */,
+				22B4CCA81C7908BE0041C314 /* iWishTests */,
+				22B4CCB31C7908BE0041C314 /* iWishUITests */,
+				22B4CC8F1C7908BE0041C314 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		22B4CC8F1C7908BE0041C314 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				22B4CC8E1C7908BE0041C314 /* iWish.app */,
+				22B4CCA51C7908BE0041C314 /* iWishTests.xctest */,
+				22B4CCB01C7908BE0041C314 /* iWishUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		22B4CC901C7908BE0041C314 /* iWish */ = {
+			isa = PBXGroup;
+			children = (
+				22B4CC911C7908BE0041C314 /* AppDelegate.swift */,
+				22B4CC931C7908BE0041C314 /* ViewController.swift */,
+				22B4CC951C7908BE0041C314 /* Main.storyboard */,
+				22B4CC9B1C7908BE0041C314 /* Assets.xcassets */,
+				22B4CC9D1C7908BE0041C314 /* LaunchScreen.storyboard */,
+				22B4CCA01C7908BE0041C314 /* Info.plist */,
+				22B4CC981C7908BE0041C314 /* iWish.xcdatamodeld */,
+			);
+			path = iWish;
+			sourceTree = "<group>";
+		};
+		22B4CCA81C7908BE0041C314 /* iWishTests */ = {
+			isa = PBXGroup;
+			children = (
+				22B4CCA91C7908BE0041C314 /* iWishTests.swift */,
+				22B4CCAB1C7908BE0041C314 /* Info.plist */,
+			);
+			path = iWishTests;
+			sourceTree = "<group>";
+		};
+		22B4CCB31C7908BE0041C314 /* iWishUITests */ = {
+			isa = PBXGroup;
+			children = (
+				22B4CCB41C7908BE0041C314 /* iWishUITests.swift */,
+				22B4CCB61C7908BE0041C314 /* Info.plist */,
+			);
+			path = iWishUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		22B4CC8D1C7908BD0041C314 /* iWish */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22B4CCB91C7908BE0041C314 /* Build configuration list for PBXNativeTarget "iWish" */;
+			buildPhases = (
+				22B4CC8A1C7908BD0041C314 /* Sources */,
+				22B4CC8B1C7908BD0041C314 /* Frameworks */,
+				22B4CC8C1C7908BD0041C314 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iWish;
+			productName = iWish;
+			productReference = 22B4CC8E1C7908BE0041C314 /* iWish.app */;
+			productType = "com.apple.product-type.application";
+		};
+		22B4CCA41C7908BE0041C314 /* iWishTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22B4CCBC1C7908BE0041C314 /* Build configuration list for PBXNativeTarget "iWishTests" */;
+			buildPhases = (
+				22B4CCA11C7908BE0041C314 /* Sources */,
+				22B4CCA21C7908BE0041C314 /* Frameworks */,
+				22B4CCA31C7908BE0041C314 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				22B4CCA71C7908BE0041C314 /* PBXTargetDependency */,
+			);
+			name = iWishTests;
+			productName = iWishTests;
+			productReference = 22B4CCA51C7908BE0041C314 /* iWishTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		22B4CCAF1C7908BE0041C314 /* iWishUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22B4CCBF1C7908BE0041C314 /* Build configuration list for PBXNativeTarget "iWishUITests" */;
+			buildPhases = (
+				22B4CCAC1C7908BE0041C314 /* Sources */,
+				22B4CCAD1C7908BE0041C314 /* Frameworks */,
+				22B4CCAE1C7908BE0041C314 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				22B4CCB21C7908BE0041C314 /* PBXTargetDependency */,
+			);
+			name = iWishUITests;
+			productName = iWishUITests;
+			productReference = 22B4CCB01C7908BE0041C314 /* iWishUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		22B4CC861C7908BD0041C314 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "All-Nighters";
+				TargetAttributes = {
+					22B4CC8D1C7908BD0041C314 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					22B4CCA41C7908BE0041C314 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 22B4CC8D1C7908BD0041C314;
+					};
+					22B4CCAF1C7908BE0041C314 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 22B4CC8D1C7908BD0041C314;
+					};
+				};
+			};
+			buildConfigurationList = 22B4CC891C7908BD0041C314 /* Build configuration list for PBXProject "iWish" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 22B4CC851C7908BD0041C314;
+			productRefGroup = 22B4CC8F1C7908BE0041C314 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				22B4CC8D1C7908BD0041C314 /* iWish */,
+				22B4CCA41C7908BE0041C314 /* iWishTests */,
+				22B4CCAF1C7908BE0041C314 /* iWishUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		22B4CC8C1C7908BD0041C314 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22B4CC9F1C7908BE0041C314 /* LaunchScreen.storyboard in Resources */,
+				22B4CC9C1C7908BE0041C314 /* Assets.xcassets in Resources */,
+				22B4CC971C7908BE0041C314 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22B4CCA31C7908BE0041C314 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22B4CCAE1C7908BE0041C314 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		22B4CC8A1C7908BD0041C314 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22B4CC941C7908BE0041C314 /* ViewController.swift in Sources */,
+				22B4CC9A1C7908BE0041C314 /* iWish.xcdatamodeld in Sources */,
+				22B4CC921C7908BE0041C314 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22B4CCA11C7908BE0041C314 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22B4CCAA1C7908BE0041C314 /* iWishTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22B4CCAC1C7908BE0041C314 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22B4CCB51C7908BE0041C314 /* iWishUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		22B4CCA71C7908BE0041C314 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 22B4CC8D1C7908BD0041C314 /* iWish */;
+			targetProxy = 22B4CCA61C7908BE0041C314 /* PBXContainerItemProxy */;
+		};
+		22B4CCB21C7908BE0041C314 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 22B4CC8D1C7908BD0041C314 /* iWish */;
+			targetProxy = 22B4CCB11C7908BE0041C314 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		22B4CC951C7908BE0041C314 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22B4CC961C7908BE0041C314 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		22B4CC9D1C7908BE0041C314 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22B4CC9E1C7908BE0041C314 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		22B4CCB71C7908BE0041C314 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		22B4CCB81C7908BE0041C314 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		22B4CCBA1C7908BE0041C314 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = iWish/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.allnighters.iWish;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		22B4CCBB1C7908BE0041C314 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = iWish/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.allnighters.iWish;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		22B4CCBD1C7908BE0041C314 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = iWishTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.allnighters.iWishTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iWish.app/iWish";
+			};
+			name = Debug;
+		};
+		22B4CCBE1C7908BE0041C314 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = iWishTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.allnighters.iWishTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iWish.app/iWish";
+			};
+			name = Release;
+		};
+		22B4CCC01C7908BE0041C314 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = iWishUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.allnighters.iWishUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = iWish;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		22B4CCC11C7908BE0041C314 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = iWishUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.allnighters.iWishUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = iWish;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		22B4CC891C7908BD0041C314 /* Build configuration list for PBXProject "iWish" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22B4CCB71C7908BE0041C314 /* Debug */,
+				22B4CCB81C7908BE0041C314 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22B4CCB91C7908BE0041C314 /* Build configuration list for PBXNativeTarget "iWish" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22B4CCBA1C7908BE0041C314 /* Debug */,
+				22B4CCBB1C7908BE0041C314 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		22B4CCBC1C7908BE0041C314 /* Build configuration list for PBXNativeTarget "iWishTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22B4CCBD1C7908BE0041C314 /* Debug */,
+				22B4CCBE1C7908BE0041C314 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		22B4CCBF1C7908BE0041C314 /* Build configuration list for PBXNativeTarget "iWishUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22B4CCC01C7908BE0041C314 /* Debug */,
+				22B4CCC11C7908BE0041C314 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		22B4CC981C7908BE0041C314 /* iWish.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				22B4CC991C7908BE0041C314 /* iWish.xcdatamodel */,
+			);
+			currentVersion = 22B4CC991C7908BE0041C314 /* iWish.xcdatamodel */;
+			path = iWish.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 22B4CC861C7908BD0041C314 /* Project object */;
+}
