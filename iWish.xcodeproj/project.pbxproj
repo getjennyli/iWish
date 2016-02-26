@@ -7,14 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22A29D9E1C7A3F2A00667F89 /* EnteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A29D9D1C7A3F2A00667F89 /* EnteryViewController.swift */; };
 		22B4CC921C7908BE0041C314 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4CC911C7908BE0041C314 /* AppDelegate.swift */; };
-		22B4CC941C7908BE0041C314 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4CC931C7908BE0041C314 /* ViewController.swift */; };
 		22B4CC971C7908BE0041C314 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B4CC951C7908BE0041C314 /* Main.storyboard */; };
 		22B4CC9A1C7908BE0041C314 /* iWish.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22B4CC981C7908BE0041C314 /* iWish.xcdatamodeld */; };
 		22B4CC9C1C7908BE0041C314 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22B4CC9B1C7908BE0041C314 /* Assets.xcassets */; };
 		22B4CC9F1C7908BE0041C314 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B4CC9D1C7908BE0041C314 /* LaunchScreen.storyboard */; };
 		22B4CCAA1C7908BE0041C314 /* iWishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4CCA91C7908BE0041C314 /* iWishTests.swift */; };
 		22B4CCB51C7908BE0041C314 /* iWishUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4CCB41C7908BE0041C314 /* iWishUITests.swift */; };
+		22B4CCC31C790E490041C314 /* Wish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4CCC21C790E490041C314 /* Wish.swift */; };
+		22B4CCC61C790ED10041C314 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22B4CCC41C790ED10041C314 /* Realm.framework */; };
+		22B4CCC71C790ED10041C314 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 22B4CCC41C790ED10041C314 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		22B4CCC81C790ED10041C314 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22B4CCC51C790ED10041C314 /* RealmSwift.framework */; };
+		22B4CCC91C790ED10041C314 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 22B4CCC51C790ED10041C314 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		22B4CCCD1C7912A50041C314 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4CCCC1C7912A50041C314 /* WishListViewController.swift */; };
+		22B4CCCF1C7912D50041C314 /* WishTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4CCCE1C7912D50041C314 /* WishTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,10 +41,25 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		22B4CCCA1C790ED10041C314 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				22B4CCC91C790ED10041C314 /* RealmSwift.framework in Embed Frameworks */,
+				22B4CCC71C790ED10041C314 /* Realm.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		22A29D9D1C7A3F2A00667F89 /* EnteryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnteryViewController.swift; sourceTree = "<group>"; };
 		22B4CC8E1C7908BE0041C314 /* iWish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22B4CC911C7908BE0041C314 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		22B4CC931C7908BE0041C314 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		22B4CC961C7908BE0041C314 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		22B4CC991C7908BE0041C314 /* iWish.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iWish.xcdatamodel; sourceTree = "<group>"; };
 		22B4CC9B1C7908BE0041C314 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +71,11 @@
 		22B4CCB01C7908BE0041C314 /* iWishUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iWishUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22B4CCB41C7908BE0041C314 /* iWishUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iWishUITests.swift; sourceTree = "<group>"; };
 		22B4CCB61C7908BE0041C314 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22B4CCC21C790E490041C314 /* Wish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wish.swift; sourceTree = "<group>"; };
+		22B4CCC41C790ED10041C314 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		22B4CCC51C790ED10041C314 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		22B4CCCC1C7912A50041C314 /* WishListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
+		22B4CCCE1C7912D50041C314 /* WishTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +83,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22B4CCC81C790ED10041C314 /* RealmSwift.framework in Frameworks */,
+				22B4CCC61C790ED10041C314 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +108,8 @@
 		22B4CC851C7908BD0041C314 = {
 			isa = PBXGroup;
 			children = (
+				22B4CCC41C790ED10041C314 /* Realm.framework */,
+				22B4CCC51C790ED10041C314 /* RealmSwift.framework */,
 				22B4CC901C7908BE0041C314 /* iWish */,
 				22B4CCA81C7908BE0041C314 /* iWishTests */,
 				22B4CCB31C7908BE0041C314 /* iWishUITests */,
@@ -100,7 +131,10 @@
 			isa = PBXGroup;
 			children = (
 				22B4CC911C7908BE0041C314 /* AppDelegate.swift */,
-				22B4CC931C7908BE0041C314 /* ViewController.swift */,
+				22B4CCC21C790E490041C314 /* Wish.swift */,
+				22B4CCCC1C7912A50041C314 /* WishListViewController.swift */,
+				22A29D9D1C7A3F2A00667F89 /* EnteryViewController.swift */,
+				22B4CCCE1C7912D50041C314 /* WishTableViewCell.swift */,
 				22B4CC951C7908BE0041C314 /* Main.storyboard */,
 				22B4CC9B1C7908BE0041C314 /* Assets.xcassets */,
 				22B4CC9D1C7908BE0041C314 /* LaunchScreen.storyboard */,
@@ -138,6 +172,8 @@
 				22B4CC8A1C7908BD0041C314 /* Sources */,
 				22B4CC8B1C7908BD0041C314 /* Frameworks */,
 				22B4CC8C1C7908BD0041C314 /* Resources */,
+				22B4CCCA1C790ED10041C314 /* Embed Frameworks */,
+				22B4CCCB1C790F0E0041C314 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -254,14 +290,35 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		22B4CCCB1C790F0E0041C314 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		22B4CC8A1C7908BD0041C314 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22B4CC941C7908BE0041C314 /* ViewController.swift in Sources */,
+				22B4CCCF1C7912D50041C314 /* WishTableViewCell.swift in Sources */,
+				22B4CCC31C790E490041C314 /* Wish.swift in Sources */,
+				22B4CCCD1C7912A50041C314 /* WishListViewController.swift in Sources */,
 				22B4CC9A1C7908BE0041C314 /* iWish.xcdatamodeld in Sources */,
 				22B4CC921C7908BE0041C314 /* AppDelegate.swift in Sources */,
+				22A29D9E1C7A3F2A00667F89 /* EnteryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +458,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = iWish/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.allnighters.iWish;
@@ -412,6 +473,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = iWish/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.allnighters.iWish;
@@ -486,6 +551,7 @@
 				22B4CCBB1C7908BE0041C314 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		22B4CCBC1C7908BE0041C314 /* Build configuration list for PBXNativeTarget "iWishTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +560,7 @@
 				22B4CCBE1C7908BE0041C314 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		22B4CCBF1C7908BE0041C314 /* Build configuration list for PBXNativeTarget "iWishUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +569,7 @@
 				22B4CCC11C7908BE0041C314 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

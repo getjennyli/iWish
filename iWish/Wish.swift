@@ -10,10 +10,25 @@ import Foundation
 import RealmSwift
 
 class Wish: Object {
+    dynamic var name = ""
+    dynamic var price = 0
     
-// Specify properties to ignore (Realm won't persist these)
-    
-//  override static func ignoredProperties() -> [String] {
-//    return []
-//  }
+   
+    /*init(name: String, price: Int) {
+
+        self.name = name
+        self.price = price
+        
+        super.init()
+
+    }*/
+   
+    convenience init(name: String, price: Int) {
+        self.init()
+
+        self.name = name
+        self.price = price
+        
+
+    }
 }

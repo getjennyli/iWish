@@ -10,6 +10,9 @@ import UIKit
 
 class WishTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +23,6 @@ class WishTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
 
 }
