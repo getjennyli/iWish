@@ -9,16 +9,25 @@
 import UIKit
 import RealmSwift
 
-class EnteryViewController: UIViewController {
+class EnteryViewController: UIViewController, UITextFieldDelegate {
     
     var wish: Wish?
+    // let imagePicker = UIImagePickerController()
     @IBOutlet weak var nameTxtField: UITextField!
     @IBOutlet weak var priceTxtField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var imageView: UIImageView!
     
+    @IBAction func uploadBtnDidTouch(sender: AnyObject) {
+        //imagePicker.allowsEditing = false
+      //  imagePicker.sourceType = .PhotoLibrary
+        
+      //  presentViewController(imagePicker, animated: true, completion: nil)
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //imagePicker.delegate = self
         // Do any additional setup after loading the view.
         if let wish = wish {
             navigationItem.title = wish.name
@@ -27,31 +36,11 @@ class EnteryViewController: UIViewController {
             
         }
         
+        
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func saveWish(selectedWish:Wish!) {
-        
-        if selectedWish != nil{
-           try! uiRealm.write({ () -> Void in
-                selectedWish.name = nameTxtField.text!
-                selectedWish.price = Int(priceTxtField.text!)!
-            
-            })
-        
-        } else {
-            let newWish = Wish()
-            newWish.name = nameTxtField.text!
-            newWish.price = Int(priceTxtField.text!)!
-    
-            try! uiRealm.write({ () -> Void in
-                uiRealm.add(newWish)
-        })
-        }
     }
    
     // MARK: UITextFieldDelegate
@@ -59,6 +48,28 @@ class EnteryViewController: UIViewController {
         textField.resignFirstResponder()
         return true
     }
+    // MARK: ImagePicker
+   /* func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        // The info dictionary contains multiple representations of the image, and this uses the original.
+        let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        // Set photoImageView to display the selected image.
+        imageView.image = selectedImage
+        // let imageData = UIImagePNGRepresentation(selectedImage)
+        // Dismiss the picker.
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        let selectedImage : UIImage = image
+        
+        imageView.image = selectedImage
+        dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    */
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if saveButton === sender {
@@ -66,14 +77,11 @@ class EnteryViewController: UIViewController {
             let name = nameTxtField.text ?? ""
             //print("name updated")
             let price = Int(priceTxtField.text ?? "")
-            //print("price updated")
             try! uiRealm.write({ () -> Void in
                 wish?.name = nameTxtField.text!
                 wish?.price = price!
             })
-            print("tried writing to realm")
-             wish = Wish(name: name, price: price!)
-            print ("updated wish")
+            wish = Wish(name: name, price: price!, isCompleted: false)
             
             
         }

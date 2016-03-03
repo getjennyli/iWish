@@ -12,6 +12,7 @@ class WishTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+   
 
     override func awakeFromNib() {
         super.awakeFromNib()

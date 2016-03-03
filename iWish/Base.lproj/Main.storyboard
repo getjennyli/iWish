@@ -3,10 +3,11 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Wish List View Controller-->
+        <!--iWish-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="WishListViewController" customModule="iWish" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,33 +19,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7y1-nx-pcE">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7y1-nx-pcE">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WishTableViewCell" id="JpM-YR-D9C" customClass="WishTableViewCell" customModule="iWish" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="80"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WishTableViewCell" rowHeight="150" id="JpM-YR-D9C" customClass="WishTableViewCell" customModule="iWish" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JpM-YR-D9C" id="EZu-4z-Dvi">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="149"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O48-cx-KoZ">
-                                                    <rect key="frame" x="325" y="29" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsj-I0-e7E">
+                                                    <rect key="frame" x="53" y="54" width="44" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsj-I0-e7E">
-                                                    <rect key="frame" x="34" y="29" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O48-cx-KoZ">
+                                                    <rect key="frame" x="297" y="56" width="40" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="O48-cx-KoZ" firstAttribute="trailing" secondItem="EZu-4z-Dvi" secondAttribute="trailingMargin" id="NVh-b6-NKR"/>
-                                                <constraint firstItem="vsj-I0-e7E" firstAttribute="top" secondItem="EZu-4z-Dvi" secondAttribute="topMargin" constant="21" id="Veq-fH-uMM"/>
+                                                <constraint firstItem="O48-cx-KoZ" firstAttribute="trailing" secondItem="EZu-4z-Dvi" secondAttribute="trailingMargin" constant="-30" id="UHJ-1O-Yv1"/>
+                                                <constraint firstItem="vsj-I0-e7E" firstAttribute="top" secondItem="O48-cx-KoZ" secondAttribute="top" constant="-2" id="cea-cd-EYO"/>
+                                                <constraint firstItem="vsj-I0-e7E" firstAttribute="top" secondItem="EZu-4z-Dvi" secondAttribute="topMargin" constant="46" id="ycx-TE-Bof"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -68,8 +70,9 @@
                             <constraint firstItem="7y1-nx-pcE" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="p60-eY-XWJ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="2k2-t3-ucQ">
+                    <navigationItem key="navigationItem" title="iWish" id="2k2-t3-ucQ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="7nr-kL-Gdf">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="QAO-1c-Wlb" kind="show" identifier="AddItem" id="CeL-Wo-lCX"/>
                             </connections>
@@ -96,23 +99,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aoF-g1-LvP">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="22662" translatesAutoresizingMaskIntoConstraints="NO" id="aoF-g1-LvP">
                                 <rect key="frame" x="0.0" y="64" width="375" height="175"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="aoF-g1-LvP" secondAttribute="height" multiplier="15:7" id="szq-6S-SAu"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZH-EI-Hw0">
                                 <rect key="frame" x="140" y="247" width="95" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="6od-8u-OpD"/>
+                                </constraints>
                                 <state key="normal" title="Upload Image"/>
+                                <connections>
+                                    <action selector="uploadBtnDidTouch:" destination="QAO-1c-Wlb" eventType="touchUpInside" id="Jx0-C3-3a8"/>
+                                </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RuL-MN-OhP">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="item" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RuL-MN-OhP">
                                 <rect key="frame" x="40" y="310" width="307" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="4Qi-aR-9aO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="QAO-1c-Wlb" id="ops-3j-CPz"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gFP-zq-gll">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gFP-zq-gll">
                                 <rect key="frame" x="40" y="368" width="307" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="0nx-LT-kcY"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
@@ -121,6 +140,7 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="aoF-g1-LvP" firstAttribute="top" secondItem="cpr-Zl-Nlh" secondAttribute="bottom" id="2RM-Bl-3ll"/>
                             <constraint firstItem="gFP-zq-gll" firstAttribute="top" secondItem="RuL-MN-OhP" secondAttribute="bottom" constant="28" id="359-0h-bSB"/>
@@ -145,6 +165,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="imageView" destination="aoF-g1-LvP" id="Z7g-8E-ZYv"/>
                         <outlet property="nameTxtField" destination="RuL-MN-OhP" id="luj-Os-SPy"/>
                         <outlet property="priceTxtField" destination="gFP-zq-gll" id="3lm-Uj-7yT"/>
                         <outlet property="saveButton" destination="oSq-N1-3HG" id="OOD-bW-s80"/>
@@ -164,6 +185,12 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="isn-3C-YsX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.35294117647058826" green="0.90196078431372551" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -175,6 +202,9 @@
             <point key="canvasLocation" x="304" y="386"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="22662" width="3872" height="2592"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="CeL-Wo-lCX"/>
     </inferredMetricsTieBreakers>
