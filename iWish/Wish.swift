@@ -11,11 +11,12 @@ import RealmSwift
 
 class Wish: Object {
     dynamic var name = ""
-    dynamic var price = 0
+    dynamic var price = 0.00
     dynamic var isCompleted = false
+
     // dynamic var image = NSData()
 
-    convenience init(name: String, price: Int, isCompleted: Bool) {
+    convenience init(name: String, price: Double, isCompleted: Bool) {
         self.init()
 
         self.name = name

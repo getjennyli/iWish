@@ -118,6 +118,7 @@
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="item" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RuL-MN-OhP">
                                 <rect key="frame" x="40" y="310" width="307" height="30"/>
+                                <color key="tintColor" red="0.34901960784313724" green="0.8901960784313725" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="4Qi-aR-9aO"/>
                                 </constraints>
@@ -129,6 +130,7 @@
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gFP-zq-gll">
                                 <rect key="frame" x="40" y="368" width="307" height="30"/>
+                                <color key="tintColor" red="0.34901960784313724" green="0.8901960784313725" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="0nx-LT-kcY"/>
                                 </constraints>

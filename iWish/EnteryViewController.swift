@@ -75,8 +75,7 @@ class EnteryViewController: UIViewController, UITextFieldDelegate {
         if saveButton === sender {
             
             let name = nameTxtField.text ?? ""
-            //print("name updated")
-            let price = Int(priceTxtField.text ?? "")
+            let price = Double(priceTxtField.text ?? "")
             try! uiRealm.write({ () -> Void in
                 wish?.name = nameTxtField.text!
                 wish?.price = price!
