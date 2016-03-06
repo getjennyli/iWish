@@ -81,6 +81,9 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
             }
             cell.nameLabel?.text = wish.name
             cell.priceLabel?.text = String(wish.price)
+            cell.progressView.progress = Float(wish.progress)
+            cell.progressLabel.text = wish.progressLabel
+            cell.notesLabel?.text = wish.notes
             return cell
         }
     
