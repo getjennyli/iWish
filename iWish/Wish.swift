@@ -24,7 +24,7 @@ class Wish: Object {
         self.name = name
         self.price = price
         self.isCompleted = false
-        self.progress = 100/price
+        self.progress = progress
         self.progressLabel = progressLabel
         self.notes = notes
     }

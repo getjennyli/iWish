@@ -10,24 +10,19 @@ import UIKit
 import RealmSwift
 
 class EnteryViewController: UIViewController, UITextFieldDelegate {
-    
+    var activeField: UITextField?
     var wish: Wish?
+    //var saving: Saving?
     // let imagePicker = UIImagePickerController()
     @IBOutlet weak var nameTxtField: UITextField!
     @IBOutlet weak var priceTxtField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var notesTxtField: UITextField!
     @IBOutlet weak var progressView: UIProgressView!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var progressLabel: UILabel!
-    @IBAction func uploadBtnDidTouch(sender: AnyObject) {
-        //imagePicker.allowsEditing = false
-      //  imagePicker.sourceType = .PhotoLibrary
-        
-      //  presentViewController(imagePicker, animated: true, completion: nil)
-        
-    }
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         //imagePicker.delegate = self
@@ -40,19 +35,25 @@ class EnteryViewController: UIViewController, UITextFieldDelegate {
             progressView.progress = Float(wish.progress)
             progressLabel.text = wish.progressLabel
         }
+       // progressView.progress = Float(saving!.save/wish!.price)
+
         
         
     }
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        // Dispose of any resouxrces that can be recreated.
     }
    
     // MARK: UITextFieldDelegate
+   
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
+  
     // MARK: ImagePicker
    /* func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         // The info dictionary contains multiple representations of the image, and this uses the original.
@@ -101,6 +102,7 @@ class EnteryViewController: UIViewController, UITextFieldDelegate {
                 wish?.progress = progresss
                 wish?.progressLabel = progressLabel!
                 wish?.notes = notes
+                
             })
             wish = Wish(name: name, price: price!, isCompleted: false, progress: progresss, progressLabel: progressLabel!, notes: notes)
             

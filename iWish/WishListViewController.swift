@@ -15,6 +15,7 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
     var wishs = [Wish]()
     var openWishs : Results<Wish>!
     var completedWishs : Results<Wish>!
+    //var saving = [Saving]()
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -22,8 +23,7 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
         reloadTheTable()
         // Do any additional setup after loading the view.
     }
@@ -31,9 +31,6 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
    
     func reloadTheTable() {
         
-        //completedWish = self.wish.filter("isCompleted = true")
-        //datasource = self.wishs.filter("isCompleted = false")
-        //self.tableView.reloadData()
         do {
             let realm = try Realm()
             
@@ -45,8 +42,7 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
             
         }
     }
-    
-    override func didReceiveMemoryWarning() {
+        override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -62,6 +58,10 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
         }
         return "Completed Wishs"
     }
+    
+    // LongPress Cell to move, http://www.freshconsulting.com/create-drag-and-drop-uitableview-swift/
+    
+   
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return openWishs.count
@@ -72,6 +72,7 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
         func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCellWithIdentifier("WishTableViewCell", forIndexPath: indexPath) as! WishTableViewCell
             var wish: Wish!
+        //    var saving: Saving!
             if indexPath.section == 0 {
                 wish = openWishs[indexPath.row]
             }
@@ -79,6 +80,7 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
             else {
                 wish = completedWishs[indexPath.row]
             }
+           // let progress = saving.save/(wish?.price)!
             cell.nameLabel?.text = wish.name
             cell.priceLabel?.text = String(wish.price)
             cell.progressView.progress = Float(wish.progress)
@@ -87,6 +89,7 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
             return cell
         }
     
+
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Destructive, title: "Delete") { (deleteAction, indexPath) -> Void in
             
