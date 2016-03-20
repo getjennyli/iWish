@@ -15,6 +15,8 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
     var wishs = [Wish]()
     var openWishs : Results<Wish>!
     var completedWishs : Results<Wish>!
+    var savings = [Saving]()
+    var datasource: Results<Saving>!
     //var saving = [Saving]()
     
     override func viewWillAppear(animated: Bool) {
@@ -23,7 +25,6 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
         reloadTheTable()
         // Do any additional setup after loading the view.
     }
@@ -47,10 +48,25 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerCell = tableView.dequeueReusableCellWithIdentifier("HeaderCell") as! HeaderCell
+        headerCell.contentView.backgroundColor = UIColor.cyanColor()
+        headerCell.wantsLabel.text = String(openWishs.count)
+        headerCell.completedLabel.text = String(completedWishs.count)
+        let totalSave : Int = uiRealm.objects(Saving).sum("save")
+        headerCell.savingLabel.text = String(totalSave)
+        return headerCell.contentView
+    }
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 75
+    }
+    
+
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0{
@@ -58,7 +74,7 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
         }
         return "Completed Wishs"
     }
-    
+
     // LongPress Cell to move, http://www.freshconsulting.com/create-drag-and-drop-uitableview-swift/
     
    
@@ -73,6 +89,7 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
             let cell = tableView.dequeueReusableCellWithIdentifier("WishTableViewCell", forIndexPath: indexPath) as! WishTableViewCell
             var wish: Wish!
         //    var saving: Saving!
+
             if indexPath.section == 0 {
                 wish = openWishs[indexPath.row]
             }
@@ -89,7 +106,7 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
             return cell
         }
     
-
+    // TableViewCell Swipe Action
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Destructive, title: "Delete") { (deleteAction, indexPath) -> Void in
             
@@ -120,6 +137,7 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
         }
         return [deleteAction, doneAction]
     }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowDetail" {
@@ -162,4 +180,5 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
             }
         }
     }
+ 
 }

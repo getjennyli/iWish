@@ -10,18 +10,21 @@ import UIKit
 import RealmSwift
 
 class AddSavingViewController: UIViewController, UITextFieldDelegate {
-
-    @IBOutlet weak var savingTxtField: UITextField!
-    @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var savingNotesTxtField: UITextField!
     var saving: Saving?
+    
+    @IBOutlet weak var savingTxtField: UITextField!
+    @IBOutlet weak var savingNotesTxtField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
       // print(Realm.Configuration.defaultConfiguration.path!)
         savingTxtField.keyboardType = UIKeyboardType.DecimalPad
-
+        if let saving = saving {
+            savingTxtField.text = String(saving.save)
+            savingNotesTxtField.text = saving.saveNotes
+        }
+       
         
     }
 
@@ -43,9 +46,23 @@ class AddSavingViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func saveBtnDidTouch(sender: AnyObject) {
+        let amount = Double(savingTxtField.text ?? "")
+        let notes = savingNotesTxtField.text ?? ""
+        let currentDate = NSDate()
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        var convertedDate = dateFormatter.stringFromDate(currentDate)
         
+        saving = Saving(save: amount!, saveNotes: notes, date: currentDate)
+        let realm = try! Realm()
+        try! realm.write(){
+            //saving?.save = amount!
+            //saving?.saveNotes = notes
+            realm.add(saving!)
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+   /* override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if saveButton === sender {
             let amount = Double(savingTxtField.text ?? "")
             let notes = savingNotesTxtField.text ?? ""
@@ -55,9 +72,8 @@ class AddSavingViewController: UIViewController, UITextFieldDelegate {
                 saving?.saveNotes = notes
             })
             saving = Saving(save: amount!, saveNotes: notes)
-            print("saving saved")
             self.dismissViewControllerAnimated(true, completion: nil)
         }
-    }
+    }*/
     
 }

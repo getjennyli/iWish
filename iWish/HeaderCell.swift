@@ -1,19 +1,18 @@
 //
-//  SavingTableViewCell.swift
+//  HeaderCell.swift
 //  iWish
 //
-//  Created by 卡卡 on 3/9/16.
+//  Created by 卡卡 on 3/10/16.
 //  Copyright © 2016 All-Nighters. All rights reserved.
 //
 
 import UIKit
 
-class SavingTableViewCell: UITableViewCell {
-
-
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var savingAmtLabel: UILabel!
-    @IBOutlet weak var savingNoteLabel: UILabel!
+class HeaderCell: UITableViewCell {
+    @IBOutlet weak var wantsLabel: UILabel!
+    @IBOutlet weak var savingLabel: UILabel!
+    @IBOutlet weak var completedLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,4 +24,5 @@ class SavingTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    
 }

@@ -12,11 +12,12 @@ import RealmSwift
 class Saving: Object {
     dynamic var save = 0.00
     dynamic var saveNotes = ""
-    
-    convenience init(save: Double, saveNotes: String) {
+    dynamic var date = NSDate()
+    convenience init(save: Double, saveNotes: String, date: NSDate) {
         self.init()
         
-        self.save = 20
+        self.save = save
         self.saveNotes = saveNotes
+        self.date = date
     }
 }

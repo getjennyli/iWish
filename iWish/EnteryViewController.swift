@@ -36,7 +36,7 @@ class EnteryViewController: UIViewController, UITextFieldDelegate {
             progressLabel.text = wish.progressLabel
         }
        // progressView.progress = Float(saving!.save/wish!.price)
-
+        priceTxtField.keyboardType = UIKeyboardType.DecimalPad
         
         
     }

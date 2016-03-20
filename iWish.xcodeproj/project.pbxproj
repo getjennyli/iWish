@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2246F4C11C907D910018B1E2 /* Saving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2246F4C01C907D910018B1E2 /* Saving.swift */; };
+		2264427B1C9228B7005EF000 /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264427A1C9228B7005EF000 /* HeaderCell.swift */; };
 		226A5BBE1C909C0700A7E8C1 /* SavingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226A5BBD1C909C0700A7E8C1 /* SavingListViewController.swift */; };
 		226A5BC01C909CB900A7E8C1 /* SavingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226A5BBF1C909CB900A7E8C1 /* SavingTableViewCell.swift */; };
 		22A29D9E1C7A3F2A00667F89 /* EnteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A29D9D1C7A3F2A00667F89 /* EnteryViewController.swift */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		2246F4C01C907D910018B1E2 /* Saving.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Saving.swift; sourceTree = "<group>"; };
+		2264427A1C9228B7005EF000 /* HeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
 		226A5BBD1C909C0700A7E8C1 /* SavingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavingListViewController.swift; sourceTree = "<group>"; };
 		226A5BBF1C909CB900A7E8C1 /* SavingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavingTableViewCell.swift; sourceTree = "<group>"; };
 		22A29D9D1C7A3F2A00667F89 /* EnteryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnteryViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				22B4CCCE1C7912D50041C314 /* WishTableViewCell.swift */,
 				22A29D9D1C7A3F2A00667F89 /* EnteryViewController.swift */,
 				22B4CCCC1C7912A50041C314 /* WishListViewController.swift */,
+				2264427A1C9228B7005EF000 /* HeaderCell.swift */,
 			);
 			name = wishs;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				22B4CC921C7908BE0041C314 /* AppDelegate.swift in Sources */,
 				226A5BBE1C909C0700A7E8C1 /* SavingListViewController.swift in Sources */,
 				22A29D9E1C7A3F2A00667F89 /* EnteryViewController.swift in Sources */,
+				2264427B1C9228B7005EF000 /* HeaderCell.swift in Sources */,
 				2246F4C11C907D910018B1E2 /* Saving.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

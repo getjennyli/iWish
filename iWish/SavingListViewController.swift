@@ -42,23 +42,44 @@ class SavingListViewController: UIViewController, UITableViewDelegate, UITableVi
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return datasource.count
     }
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SavingTableViewCell", forIndexPath: indexPath) as! SavingTableViewCell
         var saving: Saving!
         saving = datasource[indexPath.row]
         
-        cell.savingAmtLabel.text = String(saving.save)
-        cell.savingNoteLabel.text = saving.saveNotes
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        
+        cell.savingAmtLabel?.text = String(saving.save)
+        cell.savingNoteLabel?.text = saving.saveNotes
+        cell.dateLabel?.text = dateFormatter.stringFromDate(saving.date)
+        
         return cell
     }
     
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Destructive, title: "Delete") { (deleteAction, indexPath) -> Void in
+            
+            var savingToBeDeleted : Saving!
+                savingToBeDeleted = self.datasource[indexPath.row]
+           
+            try! uiRealm.write({ () -> Void in
+                uiRealm.delete(savingToBeDeleted)
+                self.reloadTheTable()
+            })
+        }
+        
+        return [deleteAction]
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ShowSaving" {
+        if segue.identifier == "showSaving" {
             let savingDetailViewController = segue.destinationViewController as? AddSavingViewController
             
             if let selectedSavingCell = sender as? SavingTableViewCell {
