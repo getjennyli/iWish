@@ -14,7 +14,7 @@ class SavingListViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var tableView: UITableView!
     var savings = [Saving]()
     var datasource : Results<Saving>!
-    
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         reloadTheTable()
@@ -50,6 +50,7 @@ class SavingListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SavingTableViewCell", forIndexPath: indexPath) as! SavingTableViewCell
+    
         var saving: Saving!
         saving = datasource[indexPath.row]
         
@@ -59,8 +60,8 @@ class SavingListViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.savingAmtLabel?.text = String(saving.save)
         cell.savingNoteLabel?.text = saving.saveNotes
         cell.dateLabel?.text = dateFormatter.stringFromDate(saving.date)
-        
         return cell
+
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {

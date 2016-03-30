@@ -84,12 +84,21 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
         }
         return completedWishs.count
     }
+ /*   @IBAction func indexChanged(sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0{
+            let cell = tableView.dequeueReusableCellWithIdentifier("WishTableViewCell",forIndexPath: indexPath) as! WishTableViewCell
+        }
+        else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("SavingTableViewCell",forIndexPath: indexPath) as! SavingTableViewCell
+        }
+        self.tableView.reloadData()
+    }*/
 
         func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCellWithIdentifier("WishTableViewCell", forIndexPath: indexPath) as! WishTableViewCell
             var wish: Wish!
         //    var saving: Saving!
-
+            var saving: Saving!
             if indexPath.section == 0 {
                 wish = openWishs[indexPath.row]
             }
@@ -104,6 +113,7 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
             cell.progressLabel.text = wish.progressLabel
             cell.notesLabel?.text = wish.notes
             return cell
+            
         }
     
     // TableViewCell Swipe Action
@@ -180,5 +190,6 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
             }
         }
     }
+    
  
 }
