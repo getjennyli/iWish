@@ -23,7 +23,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HeaderCell" rowHeight="76" id="JpM-YR-D9C" customClass="HeaderCell" customModule="iWish" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="76"/>
+                                        <rect key="frame" x="0.0" y="92" width="375" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JpM-YR-D9C" id="EZu-4z-Dvi">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="76"/>
@@ -47,6 +47,16 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2bC-Tk-Dfl">
+                                                    <rect key="frame" x="127" y="11" width="121" height="29"/>
+                                                    <segments>
+                                                        <segment title="Wish"/>
+                                                        <segment title="Saving"/>
+                                                    </segments>
+                                                    <connections>
+                                                        <action selector="indexChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="TMo-1S-QMH"/>
+                                                    </connections>
+                                                </segmentedControl>
                                             </subviews>
                                             <color key="backgroundColor" red="0.34901960780000002" green="0.89019607840000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
@@ -59,11 +69,12 @@
                                         <connections>
                                             <outlet property="completedLabel" destination="1LD-gC-ZkU" id="IIb-mq-LnT"/>
                                             <outlet property="savingLabel" destination="O8N-Ya-zgP" id="17g-d6-tdS"/>
+                                            <outlet property="segmentedControl" destination="2bC-Tk-Dfl" id="SBv-fa-rZV"/>
                                             <outlet property="wantsLabel" destination="YZD-u1-bgZ" id="vTw-EL-vQJ"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WishTableViewCell" rowHeight="105" id="1n2-Xm-diz" customClass="WishTableViewCell" customModule="iWish" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="104" width="375" height="105"/>
+                                        <rect key="frame" x="0.0" y="168" width="375" height="105"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1n2-Xm-diz" id="zlx-Q6-5zV">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="105"/>
@@ -126,6 +137,40 @@
                                             <segue destination="QAO-1c-Wlb" kind="show" identifier="ShowDetail" id="HsE-Wg-RMt"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SavingTableViewCell" rowHeight="70" id="2DQ-Rs-x0H" customClass="SavingTableViewCell" customModule="iWish" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="273" width="375" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2DQ-Rs-x0H" id="pCU-0G-7jT">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMh-eK-erY">
+                                                    <rect key="frame" x="95" y="24" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQW-5V-z4G">
+                                                    <rect key="frame" x="45" y="24" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyR-a9-13K">
+                                                    <rect key="frame" x="317" y="24" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="cQW-5V-z4G" id="bfR-rM-XOt"/>
+                                            <outlet property="savingAmtLabel" destination="fyR-a9-13K" id="whW-Ss-IU8"/>
+                                            <outlet property="savingNoteLabel" destination="kMh-eK-erY" id="yNX-SF-S3g"/>
+                                            <segue destination="Owe-2l-sFv" kind="presentation" trigger="accessoryAction" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="74b-Ls-L2w"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="jkL-F7-U3Z"/>
@@ -172,15 +217,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="bnR-7Y-LRH">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="bnR-7Y-LRH">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MRh-TU-ViQ">
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MRh-TU-ViQ">
                                         <rect key="frame" x="0.0" y="53" width="375" height="2"/>
                                         <color key="progressTintColor" red="0.34901960780000002" green="0.89019607840000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="trackTintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </progressView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="item" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RuL-MN-OhP">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="item" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RuL-MN-OhP">
                                         <rect key="frame" x="38" y="91" width="320" height="30"/>
                                         <color key="tintColor" red="0.34901960784313724" green="0.8901960784313725" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -192,7 +237,7 @@
                                             <outlet property="delegate" destination="QAO-1c-Wlb" id="ops-3j-CPz"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="notes" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DOy-R4-J2C">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="notes" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DOy-R4-J2C">
                                         <rect key="frame" x="38" y="223" width="320" height="30"/>
                                         <color key="tintColor" red="0.34901960780000002" green="0.89019607840000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -204,7 +249,7 @@
                                             <outlet property="delegate" destination="QAO-1c-Wlb" id="IpK-aE-Sfn"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Price" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gFP-zq-gll">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Price" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gFP-zq-gll">
                                         <rect key="frame" x="38" y="158" width="320" height="30"/>
                                         <color key="tintColor" red="0.34901960784313724" green="0.8901960784313725" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -216,7 +261,7 @@
                                             <outlet property="delegate" destination="QAO-1c-Wlb" id="c2M-Tg-EQR"/>
                                         </connections>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sof-YW-Xxq">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sof-YW-Xxq">
                                         <rect key="frame" x="303" y="63" width="46" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="duw-v1-HLV"/>
@@ -279,10 +324,10 @@
             </objects>
             <point key="canvasLocation" x="3857.5" y="504.5"/>
         </scene>
-        <!--Saving List View Controller-->
+        <!--View Controller-->
         <scene sceneID="73C-GG-Tpp">
             <objects>
-                <viewController storyboardIdentifier="saves" id="K1C-Ot-Hu2" customClass="SavingListViewController" customModule="iWish" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="saves" id="K1C-Ot-Hu2" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ae8-Vl-Ycl"/>
                         <viewControllerLayoutGuide type="bottom" id="uE4-Kh-6y6"/>
@@ -295,7 +340,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SavingTableViewCell" rowHeight="70" id="aEN-OX-ZmU" customClass="SavingTableViewCell" customModule="iWish" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="70" id="aEN-OX-ZmU" customClass="SavingTableViewCell" customModule="iWish" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aEN-OX-ZmU" id="kgP-aW-0is">
@@ -330,18 +375,8 @@
                                                 <constraint firstItem="bRH-Uw-4lQ" firstAttribute="leading" secondItem="CxZ-EI-stb" secondAttribute="trailing" constant="15" id="lU4-B6-pRU"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="dateLabel" destination="CxZ-EI-stb" id="bKj-EI-Zdk"/>
-                                            <outlet property="savingAmtLabel" destination="QM3-Nu-gvq" id="BQ4-sy-ujy"/>
-                                            <outlet property="savingNoteLabel" destination="bRH-Uw-4lQ" id="Lhd-AW-ze3"/>
-                                            <segue destination="Owe-2l-sFv" kind="presentation" identifier="showSaving" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="us4-mO-9t6"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="K1C-Ot-Hu2" id="hvz-hJ-mhc"/>
-                                    <outlet property="delegate" destination="K1C-Ot-Hu2" id="c5y-wS-jPH"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -354,9 +389,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="lKe-lW-kaQ"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="tableView" destination="TUM-B7-GV4" id="Hn8-4m-Mwi"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L7j-SI-5rR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -506,10 +538,10 @@
             </objects>
             <point key="canvasLocation" x="3352.5" y="1335.5"/>
         </scene>
-        <!--Segmented View Controller-->
+        <!--View Controller-->
         <scene sceneID="zI1-Ix-OOs">
             <objects>
-                <viewController id="1K4-Xu-MVK" customClass="SegmentedViewController" customModule="iWish" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1K4-Xu-MVK" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Khx-nU-aTn"/>
                         <viewControllerLayoutGuide type="bottom" id="5Sq-ek-gua"/>
@@ -518,27 +550,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BVA-Fm-PLa">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BVA-Fm-PLa">
                                 <rect key="frame" x="0.0" y="64" width="375" height="29"/>
                                 <segments>
                                     <segment title="WANT"/>
                                     <segment title="Total Saving"/>
                                 </segments>
-                                <connections>
-                                    <action selector="indexChanged:" destination="1K4-Xu-MVK" eventType="valueChanged" id="rq6-60-E6n"/>
-                                </connections>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dL7-qk-FRO">
                                 <rect key="frame" x="0.0" y="90" width="375" height="577"/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="embed" id="ZxO-w3-TEm"/>
-                                </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ODm-t9-nW6">
                                 <rect key="frame" x="0.0" y="100" width="375" height="567"/>
-                                <connections>
-                                    <segue destination="K1C-Ot-Hu2" kind="embed" id="ROi-TT-4MN"/>
-                                </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJT-uc-8WJ">
                                 <rect key="frame" x="162" y="597" width="50" height="50"/>
@@ -547,9 +570,6 @@
                                     <constraint firstAttribute="width" constant="50" id="Zh2-Au-IOU"/>
                                 </constraints>
                                 <state key="normal" image="btn_plus"/>
-                                <connections>
-                                    <segue destination="Owe-2l-sFv" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="kdh-Jh-eaR"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -571,11 +591,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="HzS-bT-J9c"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="firstView" destination="dL7-qk-FRO" id="okz-9d-k6A"/>
-                        <outlet property="secondView" destination="ODm-t9-nW6" id="M0A-EV-hK8"/>
-                        <outlet property="segmentedControl" destination="BVA-Fm-PLa" id="DgN-gL-QHI"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDJ-2h-Q6d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -602,7 +617,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="1K4-Xu-MVK" kind="relationship" relationship="rootViewController" id="ZQ8-a2-QOY"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="n4E-F0-UWN"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ahb-t6-dK1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -615,7 +630,6 @@
         <image name="menuBtn" width="20" height="13"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kdh-Jh-eaR"/>
         <segue reference="HsE-Wg-RMt"/>
     </inferredMetricsTieBreakers>
 </document>

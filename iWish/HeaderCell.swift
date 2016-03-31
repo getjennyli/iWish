@@ -12,6 +12,7 @@ class HeaderCell: UITableViewCell {
     @IBOutlet weak var wantsLabel: UILabel!
     @IBOutlet weak var savingLabel: UILabel!
     @IBOutlet weak var completedLabel: UILabel!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     override func awakeFromNib() {
         super.awakeFromNib()
