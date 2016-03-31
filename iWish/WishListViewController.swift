@@ -17,7 +17,7 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
     var completedWishs : Results<Wish>!
     var savings = [Saving]()
     var datasource: Results<Saving>!
-    //var saving = [Saving]()
+    var segment = 0
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -25,10 +25,11 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.registerNib(UINib(nibName: "SwitchViewCell", bundle: nil), forCellReuseIdentifier: "SwitchViewCell")
+
         reloadTheTable()
         // Do any additional setup after loading the view.
     }
-
    
     func reloadTheTable() {
         
@@ -37,7 +38,7 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
             
             openWishs = realm.objects(Wish).filter("isCompleted = false")
             completedWishs = realm.objects(Wish).filter("isCompleted = true")
-            
+            datasource = realm.objects(Saving)
             tableView?.reloadData()
         } catch {
             
@@ -65,7 +66,6 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 75
     }
-    
 
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -84,37 +84,55 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
         }
         return completedWishs.count
     }
- /*   @IBAction func indexChanged(sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0{
-            let cell = tableView.dequeueReusableCellWithIdentifier("WishTableViewCell",forIndexPath: indexPath) as! WishTableViewCell
-        }
-        else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("SavingTableViewCell",forIndexPath: indexPath) as! SavingTableViewCell
+    @IBAction func indexChanged(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex{
+        case 0:
+             segment = 0
+        case 1:
+             segment = 1
+        default:
+            break
         }
         self.tableView.reloadData()
-    }*/
+    }
 
         func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCellWithIdentifier("WishTableViewCell", forIndexPath: indexPath) as! WishTableViewCell
             var wish: Wish!
-        //    var saving: Saving!
             var saving: Saving!
-            if indexPath.section == 0 {
-                wish = openWishs[indexPath.row]
-            }
+            saving = datasource[indexPath.row]
+            var cell: UITableViewCell!
+            switch (indexPath.row){
+            case 0:
+            let cell = tableView.dequeueReusableCellWithIdentifier("WishTableViewCell", forIndexPath: indexPath) as! WishTableViewCell
+            wish = openWishs[indexPath.row]
+          //  if indexPath.section == 0 {
+            //    wish = openWishs[indexPath.row]
+            //}
             //let wish = datasource[indexPath.row]
-            else {
-                wish = completedWishs[indexPath.row]
-            }
+            //else {
+             //   wish = completedWishs[indexPath.row]
+            //}
            // let progress = saving.save/(wish?.price)!
             cell.nameLabel?.text = wish.name
             cell.priceLabel?.text = String(wish.price)
             cell.progressView.progress = Float(wish.progress)
             cell.progressLabel.text = wish.progressLabel
             cell.notesLabel?.text = wish.notes
+            case 1:
+            // Saving Cell
+                let cell = tableView.dequeueReusableCellWithIdentifier("SavingTableViewCell", forIndexPath: indexPath) as! SavingTableViewCell
+                saving = datasource[indexPath.row]
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+                cell.savingAmtLabel?.text = String(saving.save)
+                cell.savingNoteLabel?.text = saving.saveNotes
+                cell.dateLabel?.text = dateFormatter.stringFromDate(saving.date)
+
+            default:
+                break
+            }
             return cell
-            
-        }
+    }
     
     // TableViewCell Swipe Action
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
@@ -191,5 +209,4 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
- 
 }
