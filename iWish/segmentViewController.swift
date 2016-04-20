@@ -13,10 +13,13 @@ class segmentViewController: UIViewController {
 
     @IBOutlet weak var wishView: UIView!
     @IBOutlet weak var savingView: UIView!
+    @IBOutlet weak var completeView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         wishView.hidden = false
         savingView.hidden = true
+        completeView.hidden = true
+
       //  print(Realm.Configuration.defaultConfiguration.path!)
 
         // Do any additional setup after loading the view.
@@ -42,12 +45,17 @@ class segmentViewController: UIViewController {
         case 1:
             wishView.hidden = false
             savingView.hidden = true
+            completeView.hidden = true
         case 2:
             wishView.hidden = true
             savingView.hidden = false
+            completeView.hidden = true
+
         case 3:
-            wishView.hidden = false
+            wishView.hidden = true
             savingView.hidden = true
+            completeView.hidden = false
+
         default: ()
             break;
         }

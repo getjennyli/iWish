@@ -1,22 +1,23 @@
 //
-//  WishListViewController.swift
+//  CompletedViewController.swift
 //  iWish
 //
-//  Created by 卡卡 on 2/20/16.
+//  Created by 卡卡 on 4/20/16.
 //  Copyright © 2016 All-Nighters. All rights reserved.
 //
 
 import UIKit
 import RealmSwift
 
-class WishListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CompletedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    
     @IBOutlet weak var tableView: UITableView!
     var wishs = [Wish]()
     var openWishs : Results<Wish>!
-  //  var completedWishs : Results<Wish>!
+    //  var completedWishs : Results<Wish>!
     var savings = [Saving]()
-    var datasource: Results<Saving>!
+  //  var datasource: Results<Saving>!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -24,23 +25,23 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         reloadTheTable()
         // Do any additional setup after loading the view.
     }
-   
+    
     func reloadTheTable() {
         
         do {
             let realm = try Realm()
             
-            openWishs = realm.objects(Wish).filter("isCompleted = false")
+            openWishs = realm.objects(Wish).filter("isCompleted = true")
             tableView?.reloadData()
         } catch {
             
         }
     }
-        override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -50,37 +51,37 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
         return 1
     }
     
-
+    
     // LongPress Cell to move, http://www.freshconsulting.com/create-drag-and-drop-uitableview-swift/
     
-   
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return openWishs.count
+        return openWishs.count
         
     }
-
-        func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-            var wish: Wish!
-            let cell = tableView.dequeueReusableCellWithIdentifier("WishTableViewCell", forIndexPath: indexPath) as! WishTableViewCell
-            wish = openWishs[indexPath.row]
-            let image: UIImage = UIImage(data:wish.image,scale:1.0)!
-
-          //  if indexPath.section == 0 {
-            //    wish = openWishs[indexPath.row]
-            //}
-            //let wish = datasource[indexPath.row]
-            //else {
-             //   wish = completedWishs[indexPath.row]
-            //}
-           // let progress = saving.save/(wish?.price)!
-            cell.nameLabel?.text = wish.name
-            cell.priceLabel?.text = String(wish.price)
-            cell.progressView.progress = Float(wish.progress)
-            cell.progressLabel.text = wish.progressLabel
-            cell.notesLabel?.text = wish.notes
-            cell.imgView?.image = image
-            print("cellTapped")
-            return cell
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var wish: Wish!
+        let cell = tableView.dequeueReusableCellWithIdentifier("WishTableViewCell", forIndexPath: indexPath) as! WishTableViewCell
+        wish = openWishs[indexPath.row]
+        let image: UIImage = UIImage(data:wish.image,scale:1.0)!
+        
+        //  if indexPath.section == 0 {
+        //    wish = openWishs[indexPath.row]
+        //}
+        //let wish = datasource[indexPath.row]
+        //else {
+        //   wish = completedWishs[indexPath.row]
+        //}
+        // let progress = saving.save/(wish?.price)!
+        cell.nameLabel?.text = wish.name
+        cell.priceLabel?.text = String(wish.price)
+        cell.progressView.progress = Float(wish.progress)
+        cell.progressLabel.text = wish.progressLabel
+        cell.notesLabel?.text = wish.notes
+        cell.imgView?.image = image
+        print("cellTapped")
+        return cell
     }
     
     // TableViewCell Swipe Action
@@ -88,8 +89,8 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
         let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Destructive, title: "Delete") { (deleteAction, indexPath) -> Void in
             
             var wishToBeDeleted : Wish!
-                wishToBeDeleted = self.openWishs[indexPath.row]
-         
+            wishToBeDeleted = self.openWishs[indexPath.row]
+            
             try! uiRealm.write({ () -> Void in
                 uiRealm.delete(wishToBeDeleted)
                 self.reloadTheTable()
@@ -97,9 +98,9 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
         }
         let doneAction = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "Done") { (doneAction, indexPath) -> Void in
             var wishToBeUpdated : Wish!
-                wishToBeUpdated = self.openWishs[indexPath.row]
-           
-           try! uiRealm.write({ () -> Void in
+            wishToBeUpdated = self.openWishs[indexPath.row]
+            
+            try! uiRealm.write({ () -> Void in
                 wishToBeUpdated.isCompleted = true
                 self.reloadTheTable()
             })
@@ -114,34 +115,34 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
             
             if let selectedWishCell = sender as? WishTableViewCell {
                 let indexPath = tableView.indexPathForCell(selectedWishCell)
-                    let selectedWish = openWishs[indexPath!.row]
-                    wishDetailViewController!.wish = selectedWish
+                let selectedWish = openWishs[indexPath!.row]
+                wishDetailViewController!.wish = selectedWish
             }
-           
+            
         }
         else if segue.identifier == "AddItem" {
             print("Adding new wish")
         }
     }
     
-    @IBAction func unwindToWishList(sender: UIStoryboardSegue) {
+  /*  @IBAction func unwindToWishList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as? EnteryViewController, wish = sourceViewController.wish {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 // Update existing wish
                 tableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
-
+                
             } else {
                 // Add new wish
                 let newIndexPath = NSIndexPath(forRow: wishs.count, inSection: 0)
-        
+                
                 try! uiRealm.write({ () -> Void in
                     uiRealm.add(wish)
                 })
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
                 
-            
+                
             }
         }
-    }
+    }*/
     
 }
