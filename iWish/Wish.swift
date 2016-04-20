@@ -16,9 +16,10 @@ class Wish: Object {
     dynamic var progress = 0.00
     dynamic var progressLabel = ""
     dynamic var notes = ""
+    dynamic var image = NSData()
     // dynamic var image = NSData()
 
-    convenience init(name: String, price: Double, isCompleted: Bool, progress: Double, progressLabel: String, notes: String) {
+    convenience init(name: String, price: Double, isCompleted: Bool, progress: Double, progressLabel: String, notes: String, image: NSData) {
         self.init()
 
         self.name = name
@@ -27,5 +28,6 @@ class Wish: Object {
         self.progress = progress
         self.progressLabel = progressLabel
         self.notes = notes
+        self.image = image
     }
 }

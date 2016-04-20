@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		220E7A151CA49DF5009C358A /* SegmentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220E7A141CA49DF5009C358A /* SegmentedViewController.swift */; };
+		2234AEB31CC80BA100EF049A /* SaveListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2234AEB21CC80BA100EF049A /* SaveListViewController.swift */; };
 		2246F4C11C907D910018B1E2 /* Saving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2246F4C01C907D910018B1E2 /* Saving.swift */; };
-		2264427B1C9228B7005EF000 /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264427A1C9228B7005EF000 /* HeaderCell.swift */; };
-		226A5BBE1C909C0700A7E8C1 /* SavingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226A5BBD1C909C0700A7E8C1 /* SavingListViewController.swift */; };
 		226A5BC01C909CB900A7E8C1 /* SavingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226A5BBF1C909CB900A7E8C1 /* SavingTableViewCell.swift */; };
 		22A29D9E1C7A3F2A00667F89 /* EnteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A29D9D1C7A3F2A00667F89 /* EnteryViewController.swift */; };
 		22B4CC921C7908BE0041C314 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4CC911C7908BE0041C314 /* AppDelegate.swift */; };
@@ -27,6 +25,7 @@
 		22B4CCC91C790ED10041C314 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 22B4CCC51C790ED10041C314 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		22B4CCCD1C7912A50041C314 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4CCCC1C7912A50041C314 /* WishListViewController.swift */; };
 		22B4CCCF1C7912D50041C314 /* WishTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4CCCE1C7912D50041C314 /* WishTableViewCell.swift */; };
+		22C98F961CC29553006F856C /* segmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C98F951CC29553006F856C /* segmentViewController.swift */; };
 		22CC02B01C8CCF510075B660 /* AddSavingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CC02AF1C8CCF510075B660 /* AddSavingViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,10 +62,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		220E7A141CA49DF5009C358A /* SegmentedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedViewController.swift; sourceTree = "<group>"; };
+		2234AEB21CC80BA100EF049A /* SaveListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveListViewController.swift; sourceTree = "<group>"; };
 		2246F4C01C907D910018B1E2 /* Saving.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Saving.swift; sourceTree = "<group>"; };
-		2264427A1C9228B7005EF000 /* HeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
-		226A5BBD1C909C0700A7E8C1 /* SavingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavingListViewController.swift; sourceTree = "<group>"; };
 		226A5BBF1C909CB900A7E8C1 /* SavingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavingTableViewCell.swift; sourceTree = "<group>"; };
 		22A29D9D1C7A3F2A00667F89 /* EnteryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnteryViewController.swift; sourceTree = "<group>"; };
 		22B4CC8E1C7908BE0041C314 /* iWish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWish.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +84,7 @@
 		22B4CCC51C790ED10041C314 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		22B4CCCC1C7912A50041C314 /* WishListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
 		22B4CCCE1C7912D50041C314 /* WishTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishTableViewCell.swift; sourceTree = "<group>"; };
+		22C98F951CC29553006F856C /* segmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = segmentViewController.swift; sourceTree = "<group>"; };
 		22CC02AF1C8CCF510075B660 /* AddSavingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSavingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,8 +120,7 @@
 			children = (
 				22CC02AF1C8CCF510075B660 /* AddSavingViewController.swift */,
 				226A5BBF1C909CB900A7E8C1 /* SavingTableViewCell.swift */,
-				226A5BBD1C909C0700A7E8C1 /* SavingListViewController.swift */,
-				220E7A141CA49DF5009C358A /* SegmentedViewController.swift */,
+				2234AEB21CC80BA100EF049A /* SaveListViewController.swift */,
 			);
 			name = saving;
 			sourceTree = "<group>";
@@ -134,7 +131,6 @@
 				22B4CCCE1C7912D50041C314 /* WishTableViewCell.swift */,
 				22A29D9D1C7A3F2A00667F89 /* EnteryViewController.swift */,
 				22B4CCCC1C7912A50041C314 /* WishListViewController.swift */,
-				2264427A1C9228B7005EF000 /* HeaderCell.swift */,
 			);
 			name = wishs;
 			sourceTree = "<group>";
@@ -167,6 +163,7 @@
 				22B4CC911C7908BE0041C314 /* AppDelegate.swift */,
 				22B4CCC21C790E490041C314 /* Wish.swift */,
 				2246F4C01C907D910018B1E2 /* Saving.swift */,
+				22C98F951CC29553006F856C /* segmentViewController.swift */,
 				223E27EA1C91CD270087C7C6 /* wishs */,
 				223E27E91C91CD120087C7C6 /* saving */,
 				22B4CC951C7908BE0041C314 /* Main.storyboard */,
@@ -350,14 +347,13 @@
 				22B4CCCF1C7912D50041C314 /* WishTableViewCell.swift in Sources */,
 				22CC02B01C8CCF510075B660 /* AddSavingViewController.swift in Sources */,
 				22B4CCC31C790E490041C314 /* Wish.swift in Sources */,
-				220E7A151CA49DF5009C358A /* SegmentedViewController.swift in Sources */,
 				226A5BC01C909CB900A7E8C1 /* SavingTableViewCell.swift in Sources */,
 				22B4CCCD1C7912A50041C314 /* WishListViewController.swift in Sources */,
+				2234AEB31CC80BA100EF049A /* SaveListViewController.swift in Sources */,
 				22B4CC9A1C7908BE0041C314 /* iWish.xcdatamodeld in Sources */,
 				22B4CC921C7908BE0041C314 /* AppDelegate.swift in Sources */,
-				226A5BBE1C909C0700A7E8C1 /* SavingListViewController.swift in Sources */,
+				22C98F961CC29553006F856C /* segmentViewController.swift in Sources */,
 				22A29D9E1C7A3F2A00667F89 /* EnteryViewController.swift in Sources */,
-				2264427B1C9228B7005EF000 /* HeaderCell.swift in Sources */,
 				2246F4C11C907D910018B1E2 /* Saving.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

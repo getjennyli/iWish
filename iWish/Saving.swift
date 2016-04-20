@@ -13,6 +13,7 @@ class Saving: Object {
     dynamic var save = 0.00
     dynamic var saveNotes = ""
     dynamic var date = NSDate()
+    
     convenience init(save: Double, saveNotes: String, date: NSDate) {
         self.init()
         

@@ -45,34 +45,34 @@ class AddSavingViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
-    @IBAction func saveBtnDidTouch(sender: AnyObject) {
+   @IBAction func saveBtnDidTouch(sender: AnyObject) {
         let amount = Double(savingTxtField.text ?? "")
         let notes = savingNotesTxtField.text ?? ""
         let currentDate = NSDate()
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
-        var convertedDate = dateFormatter.stringFromDate(currentDate)
-        
         saving = Saving(save: amount!, saveNotes: notes, date: currentDate)
         let realm = try! Realm()
-        try! realm.write(){
-            //saving?.save = amount!
-            //saving?.saveNotes = notes
+        try! realm.write {
             realm.add(saving!)
         }
-        self.dismissViewControllerAnimated(true, completion: nil)
+            //saving?.save = amount!
+            //saving?.saveNotes = notes
+        print("btn touch")
     }
-   /* override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if saveButton === sender {
+  /*  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if saveBtn === sender {
             let amount = Double(savingTxtField.text ?? "")
             let notes = savingNotesTxtField.text ?? ""
-            
+            let currentDate = NSDate()
+
             try! uiRealm.write({ () -> Void in
                 saving?.save = amount!
                 saving?.saveNotes = notes
+                saving?.date = currentDate
             })
-            saving = Saving(save: amount!, saveNotes: notes)
-            self.dismissViewControllerAnimated(true, completion: nil)
+            saving = Saving(save: amount!, saveNotes: notes, date: currentDate)
+          //  self.dismissViewControllerAnimated(true, completion: nil)
         }
     }*/
     

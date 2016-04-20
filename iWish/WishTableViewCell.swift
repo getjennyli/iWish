@@ -16,6 +16,7 @@ class WishTableViewCell: UITableViewCell {
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
    
+    @IBOutlet weak var imgView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

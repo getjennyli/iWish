@@ -14,10 +14,9 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var tableView: UITableView!
     var wishs = [Wish]()
     var openWishs : Results<Wish>!
-    var completedWishs : Results<Wish>!
+  //  var completedWishs : Results<Wish>!
     var savings = [Saving]()
     var datasource: Results<Saving>!
-    var segment = 0
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -25,7 +24,6 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.registerNib(UINib(nibName: "SwitchViewCell", bundle: nil), forCellReuseIdentifier: "SwitchViewCell")
 
         reloadTheTable()
         // Do any additional setup after loading the view.
@@ -37,8 +35,8 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
             let realm = try Realm()
             
             openWishs = realm.objects(Wish).filter("isCompleted = false")
-            completedWishs = realm.objects(Wish).filter("isCompleted = true")
-            datasource = realm.objects(Saving)
+   //         completedWishs = realm.objects(Wish).filter("isCompleted = true")
+     //       datasource = realm.objects(Saving)
             tableView?.reloadData()
         } catch {
             
@@ -54,57 +52,21 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
         return 1
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerCell = tableView.dequeueReusableCellWithIdentifier("HeaderCell") as! HeaderCell
-        headerCell.contentView.backgroundColor = UIColor.cyanColor()
-        headerCell.wantsLabel.text = String(openWishs.count)
-        headerCell.completedLabel.text = String(completedWishs.count)
-        let totalSave : Int = uiRealm.objects(Saving).sum("save")
-        headerCell.savingLabel.text = String(totalSave)
-        return headerCell.contentView
-    }
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 75
-    }
-
-    
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0{
-            return "Open Wishs"
-        }
-        return "Completed Wishs"
-    }
 
     // LongPress Cell to move, http://www.freshconsulting.com/create-drag-and-drop-uitableview-swift/
     
    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
             return openWishs.count
-        }
-        return completedWishs.count
-    }
-    @IBAction func indexChanged(sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex{
-        case 0:
-             segment = 0
-        case 1:
-             segment = 1
-        default:
-            break
-        }
-        self.tableView.reloadData()
+        
     }
 
         func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
             var wish: Wish!
-            var saving: Saving!
-            saving = datasource[indexPath.row]
-            var cell: UITableViewCell!
-            switch (indexPath.row){
-            case 0:
             let cell = tableView.dequeueReusableCellWithIdentifier("WishTableViewCell", forIndexPath: indexPath) as! WishTableViewCell
             wish = openWishs[indexPath.row]
+            let image: UIImage = UIImage(data:wish.image,scale:1.0)!
+
           //  if indexPath.section == 0 {
             //    wish = openWishs[indexPath.row]
             //}
@@ -118,9 +80,9 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
             cell.progressView.progress = Float(wish.progress)
             cell.progressLabel.text = wish.progressLabel
             cell.notesLabel?.text = wish.notes
-            case 1:
+            cell.imgView?.image = image
             // Saving Cell
-                let cell = tableView.dequeueReusableCellWithIdentifier("SavingTableViewCell", forIndexPath: indexPath) as! SavingTableViewCell
+        /*        let cell = tableView.dequeueReusableCellWithIdentifier("SavingTableViewCell", forIndexPath: indexPath) as! SavingTableViewCell
                 saving = datasource[indexPath.row]
                 let dateFormatter = NSDateFormatter()
                 dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
@@ -130,7 +92,8 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
 
             default:
                 break
-            }
+            */
+            print("cellTapped")
             return cell
     }
     
@@ -139,12 +102,8 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
         let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Destructive, title: "Delete") { (deleteAction, indexPath) -> Void in
             
             var wishToBeDeleted : Wish!
-            if indexPath.section == 0 {
                 wishToBeDeleted = self.openWishs[indexPath.row]
-            }
-            else {
-                wishToBeDeleted = self.completedWishs[indexPath.row]
-            }
+         
             try! uiRealm.write({ () -> Void in
                 uiRealm.delete(wishToBeDeleted)
                 self.reloadTheTable()
@@ -152,12 +111,8 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
         }
         let doneAction = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "Done") { (doneAction, indexPath) -> Void in
             var wishToBeUpdated : Wish!
-            if indexPath.section == 0 {
                 wishToBeUpdated = self.openWishs[indexPath.row]
-            }
-            else {
-                wishToBeUpdated = self.completedWishs[indexPath.row]
-            }
+           
            try! uiRealm.write({ () -> Void in
                 wishToBeUpdated.isCompleted = true
                 self.reloadTheTable()
@@ -173,14 +128,8 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
             
             if let selectedWishCell = sender as? WishTableViewCell {
                 let indexPath = tableView.indexPathForCell(selectedWishCell)
-                if indexPath!.section == 0 {
                     let selectedWish = openWishs[indexPath!.row]
                     wishDetailViewController!.wish = selectedWish
-                    
-                } else {
-                    let selectedWish = completedWishs[indexPath!.row]
-                    wishDetailViewController!.wish = selectedWish
-                }
             }
            
         }
