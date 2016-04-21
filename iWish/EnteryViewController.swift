@@ -12,6 +12,8 @@ import RealmSwift
 class EnteryViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var activeField: UITextField?
     var wish: Wish?
+    var datasource: Results<Saving>!
+    
     //var saving: Saving?
     // let imagePicker = UIImagePickerController()
     @IBOutlet weak var nameTxtField: UITextField!
@@ -27,26 +29,23 @@ class EnteryViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     @IBOutlet weak var uploadImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //imagePicker.delegate = self
-        // Do any additional setup after loading the view.
         if let wish = wish {
             let image: UIImage = UIImage(data:wish.image,scale:0.5)!
             navigationItem.title = wish.name
             nameTxtField.text = wish.name
             priceTxtField.text = String(wish.price)
             notesTxtField.text = wish.notes
-            progressView.progress = Float(wish.progress)
-            progressLabel.text = wish.progressLabel
             uploadImage.image = image
         }
-       // progressView.progress = Float(saving!.save/wish!.price)
+        
         priceTxtField.keyboardType = UIKeyboardType.DecimalPad
         uploadImage.userInteractionEnabled = true;
         let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(imageTapped(_:)))
         uploadImage.addGestureRecognizer(tapGestureRecognizer)
 
-        
-        
+        checkValidInput()
+        checkProgress()
+
     }
    
     override func didReceiveMemoryWarning() {
@@ -56,12 +55,42 @@ class EnteryViewController: UIViewController, UITextFieldDelegate, UIImagePicker
    
     // MARK: UITextFieldDelegate
    
+    func checkProgress() {
+        let totalSaving = uiRealm.objects(Saving).sum("save") as Double
+        if wish?.price == nil{
+            progressView.progress = 0
+            progressLabel.text = String("0%")
+        } else {
+            var progresss = totalSaving/(wish?.price)!
+            if progresss <= 1 {
+                progresss = totalSaving/(wish?.price)!
+            } else {
+                progresss = 1
+            }
+            progressView.progress = Float(progresss)
+            progressLabel.text = String(progresss)
+        }
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        //saveButton.enabled = false
+    }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
+    func checkValidInput() {
+        let name = nameTxtField.text ?? ""
+        saveButton.enabled = !name.isEmpty
+        let price = priceTxtField.text ?? ""
+        saveButton.enabled = !price.isEmpty
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        checkValidInput()
+    }
     //MARK: ImagePicker
     func imageTapped(img: AnyObject)
     {
@@ -156,26 +185,16 @@ class EnteryViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         if saveButton === sender {
             let name = nameTxtField.text ?? ""
             let price = Double(priceTxtField.text ?? "")
-            var progresss = 100/price!
             let notes = notesTxtField.text ?? ""
-            if progresss <= 1 {
-                progresss = 100/price!
-            } else {
-                progresss = 1
-
-            }
-            let progressLabel = numberFormatter.stringFromNumber(progresss)
             var image: NSData = UIImagePNGRepresentation(uploadImage.image!)!
 
             try! uiRealm.write({ () -> Void in
                 wish?.name = nameTxtField.text!
                 wish?.price = price!
-                wish?.progress = progresss
-                wish?.progressLabel = progressLabel!
                 wish?.notes = notes
                 wish?.image = image
             })
-            wish = Wish(name: name, price: price!, isCompleted: false, progress: progresss, progressLabel: progressLabel!, notes: notes, image: image)
+            wish = Wish(name: name, price: price!, isCompleted: false, notes: notes, image: image)
             
             
         }

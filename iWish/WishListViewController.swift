@@ -14,7 +14,6 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var tableView: UITableView!
     var wishs = [Wish]()
     var openWishs : Results<Wish>!
-  //  var completedWishs : Results<Wish>!
     var savings = [Saving]()
     var datasource: Results<Saving>!
     
@@ -33,7 +32,6 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
         
         do {
             let realm = try Realm()
-            
             openWishs = realm.objects(Wish).filter("isCompleted = false")
             tableView?.reloadData()
         } catch {
@@ -65,21 +63,21 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
             wish = openWishs[indexPath.row]
             let image: UIImage = UIImage(data:wish.image,scale:1.0)!
 
-          //  if indexPath.section == 0 {
-            //    wish = openWishs[indexPath.row]
-            //}
-            //let wish = datasource[indexPath.row]
-            //else {
-             //   wish = completedWishs[indexPath.row]
-            //}
-           // let progress = saving.save/(wish?.price)!
+            let totalSaving = uiRealm.objects(Saving).sum("save") as Double
+            var progresss = totalSaving/(wish?.price)!
+            if progresss <= 1 {
+                progresss = totalSaving/(wish?.price)!
+            } else {
+                progresss = 1
+            }
+            
+            cell.progressView.progress = Float(progresss)
+            cell.progressLabel.text = String(progresss)
             cell.nameLabel?.text = wish.name
             cell.priceLabel?.text = String(wish.price)
-            cell.progressView.progress = Float(wish.progress)
-            cell.progressLabel.text = wish.progressLabel
             cell.notesLabel?.text = wish.notes
             cell.imgView?.image = image
-            print("cellTapped")
+
             return cell
     }
     
@@ -129,16 +127,13 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 // Update existing wish
                 tableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
-
             } else {
                 // Add new wish
                 let newIndexPath = NSIndexPath(forRow: wishs.count, inSection: 0)
-        
                 try! uiRealm.write({ () -> Void in
                     uiRealm.add(wish)
                 })
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
-                
             
             }
         }

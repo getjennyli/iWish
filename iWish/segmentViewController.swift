@@ -14,12 +14,29 @@ class segmentViewController: UIViewController {
     @IBOutlet weak var wishView: UIView!
     @IBOutlet weak var savingView: UIView!
     @IBOutlet weak var completeView: UIView!
+    @IBOutlet weak var wishNum: UILabel!
+    @IBOutlet weak var savingNum: UILabel!
+    @IBOutlet weak var boughtNum: UILabel!
+    
+    var wishs = [Wish]()
+    var openWishs : Results<Wish>!
+    var savings = [Saving]()
+    var datasource: Results<Saving>!
+    var completeWishs : Results<Wish>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         wishView.hidden = false
         savingView.hidden = true
         completeView.hidden = true
-
+        datasource = uiRealm.objects(Saving)
+        openWishs = uiRealm.objects(Wish).filter("isCompleted = false")
+        completeWishs = uiRealm.objects(Wish).filter("isCompleted = true")
+        let totalSaving = datasource.sum("save") as Double
+        wishNum.text = String(openWishs.count)
+        savingNum.text = String(totalSaving)
+        boughtNum.text = String(completeWishs.count)
+        
       //  print(Realm.Configuration.defaultConfiguration.path!)
 
         // Do any additional setup after loading the view.
@@ -31,15 +48,6 @@ class segmentViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func segmentBtn(sender: UIButton) {
         switch sender.tag {
         case 1:

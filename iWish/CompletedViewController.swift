@@ -15,7 +15,6 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var tableView: UITableView!
     var wishs = [Wish]()
     var openWishs : Results<Wish>!
-    //  var completedWishs : Results<Wish>!
     var savings = [Saving]()
   //  var datasource: Results<Saving>!
     
@@ -66,21 +65,19 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
         wish = openWishs[indexPath.row]
         let image: UIImage = UIImage(data:wish.image,scale:1.0)!
         
-        //  if indexPath.section == 0 {
-        //    wish = openWishs[indexPath.row]
-        //}
-        //let wish = datasource[indexPath.row]
-        //else {
-        //   wish = completedWishs[indexPath.row]
-        //}
-        // let progress = saving.save/(wish?.price)!
+        let totalSaving = uiRealm.objects(Saving).sum("save") as Double
+        var progresss = totalSaving/(wish?.price)!
+        if progresss <= 1 {
+            progresss = totalSaving/(wish?.price)!
+        } else {
+            progresss = 1
+        }
+        cell.progressView.progress = Float(progresss)
+        cell.progressLabel.text = String(progresss)
         cell.nameLabel?.text = wish.name
         cell.priceLabel?.text = String(wish.price)
-        cell.progressView.progress = Float(wish.progress)
-        cell.progressLabel.text = wish.progressLabel
         cell.notesLabel?.text = wish.notes
         cell.imgView?.image = image
-        print("cellTapped")
         return cell
     }
     
@@ -101,7 +98,7 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
             wishToBeUpdated = self.openWishs[indexPath.row]
             
             try! uiRealm.write({ () -> Void in
-                wishToBeUpdated.isCompleted = true
+                wishToBeUpdated.isCompleted = false
                 self.reloadTheTable()
             })
         }
@@ -125,7 +122,7 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-  /*  @IBAction func unwindToWishList(sender: UIStoryboardSegue) {
+    @IBAction func unwindToWishList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as? EnteryViewController, wish = sourceViewController.wish {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 // Update existing wish
@@ -143,6 +140,6 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
                 
             }
         }
-    }*/
+    }
     
 }
