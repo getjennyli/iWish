@@ -24,6 +24,8 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadTableData), name: "reload", object: nil)
+
         reloadTheTable()
         // Do any additional setup after loading the view.
     }
@@ -38,6 +40,10 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
             
         }
     }
+    func reloadTableData(notification: NSNotification) {
+        tableView.reloadData()
+    }
+
         override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

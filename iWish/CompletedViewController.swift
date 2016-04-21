@@ -27,6 +27,8 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
         
         reloadTheTable()
         // Do any additional setup after loading the view.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadTableData), name: "reload", object: nil)
+
     }
     
     func reloadTheTable() {
@@ -40,6 +42,10 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
             
         }
     }
+    func reloadTableData(notification: NSNotification) {
+        tableView.reloadData()
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -122,7 +128,7 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    @IBAction func unwindToWishList(sender: UIStoryboardSegue) {
+  /*  @IBAction func unwindToWishList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as? EnteryViewController, wish = sourceViewController.wish {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 // Update existing wish
@@ -140,6 +146,6 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
                 
             }
         }
-    }
+    }*/
     
 }

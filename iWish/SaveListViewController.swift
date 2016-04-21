@@ -24,6 +24,11 @@ class SaveListViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         reloadTheTable()
         // Do any additional setup after loading the view.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadTableData), name: "reload", object: nil)
+
+    }
+    func reloadTableData(notification: NSNotification) {
+        tableView.reloadData()
     }
     
     func reloadTheTable() {

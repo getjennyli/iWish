@@ -24,8 +24,13 @@ class segmentViewController: UIViewController {
     var datasource: Results<Saving>!
     var completeWishs : Results<Wish>!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+      //  self.navigationController?.navigationBar.translucent = true
+       // self.navigationController?.navigationBar.clipsToBounds = true
+
+
         wishView.hidden = false
         savingView.hidden = true
         completeView.hidden = true
@@ -36,10 +41,8 @@ class segmentViewController: UIViewController {
         wishNum.text = String(openWishs.count)
         savingNum.text = String(totalSaving)
         boughtNum.text = String(completeWishs.count)
-        
-      //  print(Realm.Configuration.defaultConfiguration.path!)
 
-        // Do any additional setup after loading the view.
+     
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,15 +57,21 @@ class segmentViewController: UIViewController {
             wishView.hidden = false
             savingView.hidden = true
             completeView.hidden = true
+            NSNotificationCenter.defaultCenter().postNotificationName("reload", object: nil)
+
         case 2:
             wishView.hidden = true
             savingView.hidden = false
             completeView.hidden = true
+            NSNotificationCenter.defaultCenter().postNotificationName("reload", object: nil)
+
 
         case 3:
             wishView.hidden = true
             savingView.hidden = true
             completeView.hidden = false
+            NSNotificationCenter.defaultCenter().postNotificationName("reload", object: nil)
+
 
         default: ()
             break;
