@@ -69,7 +69,7 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
         var wish: Wish!
         let cell = tableView.dequeueReusableCellWithIdentifier("WishTableViewCell", forIndexPath: indexPath) as! WishTableViewCell
         wish = openWishs[indexPath.row]
-        let image: UIImage = UIImage(data:wish.image,scale:1.0)!
+        let image: UIImage = UIImage(data:wish.image!,scale:1.0)!
         
         let totalSaving = uiRealm.objects(Saving).sum("save") as Double
         var progresss = totalSaving/(wish?.price)!

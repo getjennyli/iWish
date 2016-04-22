@@ -39,7 +39,7 @@ class segmentViewController: UIViewController {
         completeWishs = uiRealm.objects(Wish).filter("isCompleted = true")
         let totalSaving = datasource.sum("save") as Double
         wishNum.text = String(openWishs.count)
-        savingNum.text = String(totalSaving)
+        savingNum.text = "$"+String(totalSaving)
         boughtNum.text = String(completeWishs.count)
 
      

@@ -30,7 +30,7 @@ class EnteryViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     override func viewDidLoad() {
         super.viewDidLoad()
         if let wish = wish {
-            let image: UIImage = UIImage(data:wish.image,scale:0.5)!
+            let image: UIImage = UIImage(data:wish.image!,scale:0.5)!
             navigationItem.title = wish.name
             nameTxtField.text = wish.name
             priceTxtField.text = String(wish.price)

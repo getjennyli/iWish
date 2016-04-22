@@ -67,7 +67,7 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
             var wish: Wish!
             let cell = tableView.dequeueReusableCellWithIdentifier("WishTableViewCell", forIndexPath: indexPath) as! WishTableViewCell
             wish = openWishs[indexPath.row]
-            let image: UIImage = UIImage(data:wish.image,scale:1.0)!
+            let image: UIImage = UIImage(data:wish.image!,scale:1.0)!
 
             let totalSaving = uiRealm.objects(Saving).sum("save") as Double
             var progresss = totalSaving/(wish?.price)!
@@ -78,7 +78,8 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
             }
             
             cell.progressView.progress = Float(progresss)
-            cell.progressLabel.text = String(progresss)
+            cell.progressLabel.text = String(progresss)+"%"
+          
             cell.nameLabel?.text = wish.name
             cell.priceLabel?.text = String(wish.price)
             cell.notesLabel?.text = wish.notes
