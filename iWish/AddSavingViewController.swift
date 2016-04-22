@@ -58,7 +58,7 @@ class AddSavingViewController: UIViewController, UITextFieldDelegate {
         }
             //saving?.save = amount!
             //saving?.saveNotes = notes
-        print("btn touch")
+
     }
   /*  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if saveBtn === sender {

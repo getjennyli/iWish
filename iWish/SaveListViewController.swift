@@ -18,6 +18,8 @@ class SaveListViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        NSNotificationCenter.defaultCenter().postNotificationName("currentPageChanged", object: 1)
+
         reloadTheTable()
     }
     override func viewDidLoad() {

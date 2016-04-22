@@ -20,6 +20,8 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        NSNotificationCenter.defaultCenter().postNotificationName("currentPageChanged", object: 2)
+
         reloadTheTable()
     }
     override func viewDidLoad() {

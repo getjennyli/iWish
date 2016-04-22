@@ -19,6 +19,8 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        NSNotificationCenter.defaultCenter().postNotificationName("currentPageChanged", object: 0)
+
         reloadTheTable()
     }
     override func viewDidLoad() {
