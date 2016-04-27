@@ -65,7 +65,7 @@ class SaveListViewController: UIViewController, UITableViewDelegate, UITableView
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
         
-        cell.savingAmtLabel?.text = String(saving.save)
+        cell.savingAmtLabel?.text = "$"+String(saving.save)
         cell.savingNoteLabel?.text = saving.saveNotes
         cell.dateLabel?.text = dateFormatter.stringFromDate(saving.date)
         return cell
@@ -81,8 +81,10 @@ class SaveListViewController: UIViewController, UITableViewDelegate, UITableView
                 uiRealm.delete(savingToBeDeleted)
                 self.reloadTheTable()
             })
+            NSNotificationCenter.defaultCenter().postNotificationName("reloadStat", object: nil)
+
         }
-        
+
         return [deleteAction]
     }
     

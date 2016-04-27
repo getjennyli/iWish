@@ -56,11 +56,15 @@ class AddSavingViewController: UIViewController, UITextFieldDelegate {
         try! realm.write {
             realm.add(saving!)
         }
+    NSNotificationCenter.defaultCenter().postNotificationName("reloadStat", object: nil)
+    NSNotificationCenter.defaultCenter().postNotificationName("reload", object: nil)
+
+    self.dismissViewControllerAnimated(true, completion: nil)
             //saving?.save = amount!
             //saving?.saveNotes = notes
 
     }
-  /*  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    /*  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if saveBtn === sender {
             let amount = Double(savingTxtField.text ?? "")
             let notes = savingNotesTxtField.text ?? ""

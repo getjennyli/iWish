@@ -75,15 +75,17 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let totalSaving = uiRealm.objects(Saving).sum("save") as Double
         var progresss = totalSaving/(wish?.price)!
-        if progresss <= 1 {
+        if progresss <= 0 {
+            progresss = 0
+        } else if progresss <= 1 {
             progresss = totalSaving/(wish?.price)!
         } else {
             progresss = 1
         }
         cell.progressView.progress = Float(progresss)
-        cell.progressLabel.text = String(progresss)
+        cell.progressLabel.text = String(format: "%.0f", (progresss*100))+"%"
         cell.nameLabel?.text = wish.name
-        cell.priceLabel?.text = String(wish.price)
+        cell.priceLabel?.text = "$"+String(wish.price)
         cell.notesLabel?.text = wish.notes
         cell.imgView?.image = image
         return cell
@@ -100,8 +102,10 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
                 uiRealm.delete(wishToBeDeleted)
                 self.reloadTheTable()
             })
+            NSNotificationCenter.defaultCenter().postNotificationName("reloadStat", object: nil)
+
         }
-        let doneAction = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "Done") { (doneAction, indexPath) -> Void in
+        let doneAction = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "Want") { (doneAction, indexPath) -> Void in
             var wishToBeUpdated : Wish!
             wishToBeUpdated = self.openWishs[indexPath.row]
             
@@ -109,6 +113,8 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
                 wishToBeUpdated.isCompleted = false
                 self.reloadTheTable()
             })
+            NSNotificationCenter.defaultCenter().postNotificationName("reloadStat", object: nil)
+
         }
         return [deleteAction, doneAction]
     }

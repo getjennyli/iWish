@@ -27,6 +27,8 @@ class EnteryViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     @IBOutlet weak var saveButton: UIBarButtonItem!
  
     @IBOutlet weak var uploadImage: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let wish = wish {
@@ -42,12 +44,16 @@ class EnteryViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         uploadImage.userInteractionEnabled = true;
         let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(imageTapped(_:)))
         uploadImage.addGestureRecognizer(tapGestureRecognizer)
-
+        self.automaticallyAdjustsScrollViewInsets = false
         checkValidInput()
         checkProgress()
+        registerForKeyboardNotifications()
 
     }
    
+    override func viewWillDisappear(animated: Bool) {
+        deregisterFromKeyboardNotifications()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resouxrces that can be recreated.
@@ -62,20 +68,76 @@ class EnteryViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             progressLabel.text = String("0%")
         } else {
             var progresss = totalSaving/(wish?.price)!
-            if progresss <= 1 {
+            if progresss <= 0 {
+                progresss = 0
+            } else if progresss <= 1 {
                 progresss = totalSaving/(wish?.price)!
             } else {
                 progresss = 1
             }
             progressView.progress = Float(progresss)
-            progressLabel.text = String(progresss)
+            progressLabel.text = String(format: "%.0f", (progresss*100))+"%"
         }
+    }
+    
+    func registerForKeyboardNotifications()
+    {
+        //Adding notifies on keyboard appearing
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillBeHidden:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    
+    func deregisterFromKeyboardNotifications()
+    {
+        //Removing notifies on keyboard appearing
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func keyboardWasShown(notification: NSNotification)
+    {
+        //Need to calculate keyboard exact size due to Apple suggestions
+        self.scrollView.scrollEnabled = true
+        var info : NSDictionary = notification.userInfo!
+        var keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue().size
+        var contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize!.height, 0.0)
+        
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+        
+        var aRect : CGRect = self.view.frame
+        aRect.size.height -= keyboardSize!.height
+        if let activeFieldPresent = activeField
+        {
+            if (!CGRectContainsPoint(aRect, activeField!.frame.origin))
+            {
+                self.scrollView.scrollRectToVisible(activeField!.frame, animated: true)
+            }
+        }
+        
+        
+    }
+    
+    
+    func keyboardWillBeHidden(notification: NSNotification)
+    {
+        //Once keyboard disappears, restore original positions
+        var info : NSDictionary = notification.userInfo!
+        var keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue().size
+        var contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+        self.view.endEditing(true)
+        self.scrollView.scrollEnabled = false
+        
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
         //saveButton.enabled = false
+        activeField = textField
     }
-    
+
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -90,6 +152,7 @@ class EnteryViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     func textFieldDidEndEditing(textField: UITextField) {
         checkValidInput()
+        activeField = nil
     }
     //MARK: ImagePicker
     func imageTapped(img: AnyObject)
@@ -187,7 +250,7 @@ class EnteryViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             let price = Double(priceTxtField.text ?? "")
             let notes = notesTxtField.text ?? ""
             var image: NSData = UIImagePNGRepresentation(uploadImage.image!)!
-
+            
             try! uiRealm.write({ () -> Void in
                 wish?.name = nameTxtField.text!
                 wish?.price = price!
@@ -195,7 +258,6 @@ class EnteryViewController: UIViewController, UITextFieldDelegate, UIImagePicker
                 wish?.image = image
             })
             wish = Wish(name: name, price: price!, isCompleted: false, notes: notes, image: image)
-            
             
         }
     }

@@ -70,20 +70,22 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
             let cell = tableView.dequeueReusableCellWithIdentifier("WishTableViewCell", forIndexPath: indexPath) as! WishTableViewCell
             wish = openWishs[indexPath.row]
             let image: UIImage = UIImage(data:wish.image!,scale:1.0)!
-
             let totalSaving = uiRealm.objects(Saving).sum("save") as Double
             var progresss = totalSaving/(wish?.price)!
-            if progresss <= 1 {
+            if progresss <= 0 {
+                progresss = 0
+            } else if progresss <= 1 {
                 progresss = totalSaving/(wish?.price)!
             } else {
                 progresss = 1
             }
             
+            
             cell.progressView.progress = Float(progresss)
-            cell.progressLabel.text = String(progresss)+"%"
+            cell.progressLabel.text = String(format: "%.0f", (progresss*100))+"%"
           
             cell.nameLabel?.text = wish.name
-            cell.priceLabel?.text = String(wish.price)
+            cell.priceLabel?.text = "$"+String(wish.price)
             cell.notesLabel?.text = wish.notes
             cell.imgView?.image = image
 
@@ -93,7 +95,6 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
     // TableViewCell Swipe Action
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Destructive, title: "Delete") { (deleteAction, indexPath) -> Void in
-            
             var wishToBeDeleted : Wish!
                 wishToBeDeleted = self.openWishs[indexPath.row]
          
@@ -101,15 +102,26 @@ class WishListViewController: UIViewController, UITableViewDelegate, UITableView
                 uiRealm.delete(wishToBeDeleted)
                 self.reloadTheTable()
             })
+            NSNotificationCenter.defaultCenter().postNotificationName("reloadStat", object: nil)
+
         }
-        let doneAction = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "Done") { (doneAction, indexPath) -> Void in
+        let doneAction = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "Buy") { (doneAction, indexPath) -> Void in
             var wishToBeUpdated : Wish!
-                wishToBeUpdated = self.openWishs[indexPath.row]
-           
+            var saving: Saving!
+            wishToBeUpdated = self.openWishs[indexPath.row]
+            let amount = Double(-wishToBeUpdated.price)
+            let notes = wishToBeUpdated.name
+            let currentDate = NSDate()
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+            saving = Saving(save: amount, saveNotes: notes, date: currentDate)
            try! uiRealm.write({ () -> Void in
                 wishToBeUpdated.isCompleted = true
+            uiRealm.add(saving)
                 self.reloadTheTable()
             })
+            NSNotificationCenter.defaultCenter().postNotificationName("reloadStat", object: nil)
+
         }
         return [deleteAction, doneAction]
     }

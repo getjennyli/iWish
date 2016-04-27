@@ -49,7 +49,15 @@ class segmentViewController: UIViewController {
             lastPage = currentPage
         }
     }
-
+    override func viewWillAppear(animated: Bool) {
+        datasource = uiRealm.objects(Saving)
+        openWishs = uiRealm.objects(Wish).filter("isCompleted = false")
+        completeWishs = uiRealm.objects(Wish).filter("isCompleted = true")
+        let totalSaving = datasource.sum("save") as Double
+        wishNum.text = String(openWishs.count)
+        savingNum.text = "$"+String(totalSaving)
+        boughtNum.text = String(completeWishs.count)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,18 +82,10 @@ class segmentViewController: UIViewController {
         controllers.append(boughtController)
         removeSwipeGesture()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadStats), name: "reloadStat", object: nil)
         //接收页面改变的通知
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(currentPageChanged), name: "currentPageChanged", object: nil)
-
-        datasource = uiRealm.objects(Saving)
-        openWishs = uiRealm.objects(Wish).filter("isCompleted = false")
-        completeWishs = uiRealm.objects(Wish).filter("isCompleted = true")
-        let totalSaving = datasource.sum("save") as Double
-        wishNum.text = String(openWishs.count)
-        savingNum.text = "$"+String(totalSaving)
-        boughtNum.text = String(completeWishs.count)
-
-     
+       
     }
 
     func removeSwipeGesture(){
@@ -94,6 +94,15 @@ class segmentViewController: UIViewController {
                 subView.scrollEnabled = false
             }
         }
+    }
+    func reloadStats(notification: NSNotification){
+        datasource = uiRealm.objects(Saving)
+        openWishs = uiRealm.objects(Wish).filter("isCompleted = false")
+        completeWishs = uiRealm.objects(Wish).filter("isCompleted = true")
+        let totalSaving = datasource.sum("save") as Double
+        wishNum.text = String(openWishs.count)
+        savingNum.text = "$"+String(totalSaving)
+        boughtNum.text = String(completeWishs.count)
     }
     
     override func didReceiveMemoryWarning() {
@@ -104,6 +113,8 @@ class segmentViewController: UIViewController {
 
     @IBAction func segmentBtn(sender: UIButton) {
         currentPage = sender.tag - 100
+        NSNotificationCenter.defaultCenter().postNotificationName("reloadStat", object: nil)
+
     }
     func currentPageChanged(notification: NSNotification) {
         currentPage = notification.object as! Int
