@@ -26,7 +26,8 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: "longPress:")
+        self.view.addGestureRecognizer(longPressRecognizer)
         reloadTheTable()
         // Do any additional setup after loading the view.
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadTableData), name: "reload", object: nil)
@@ -60,7 +61,43 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
     
     
     // LongPress Cell to move, http://www.freshconsulting.com/create-drag-and-drop-uitableview-swift/
-    
+    // gesture
+    func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        
+        //if longPressGestureRecognizer.state == UIGestureRecognizerState.Began {
+        
+        let touchPoint = longPressGestureRecognizer.locationInView(self.view)
+        if let indexPath = tableView.indexPathForRowAtPoint(touchPoint) {
+            let alertController = UIAlertController(title: "", message: nil, preferredStyle: .ActionSheet)
+            
+            let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) -> Void in
+                print("cancel")
+            })
+            let bought = UIAlertAction(title: "WANT", style: .Default, handler: { (action) -> Void in
+                var wishToBeUpdated: Wish!
+                wishToBeUpdated = self.openWishs[indexPath.row]
+                try! uiRealm.write({ () -> Void in
+                    wishToBeUpdated.isCompleted = !wishToBeUpdated.isCompleted
+                    self.reloadTheTable()
+                })
+                self.dismissViewControllerAnimated(true, completion: nil)
+            })
+            let delete = UIAlertAction(title: "Delete", style: .Destructive, handler: { (action) -> Void in
+                var wishToBeDeleted: Wish!
+                wishToBeDeleted = self.openWishs[indexPath.row]
+                try! uiRealm.write({ () -> Void in
+                    uiRealm.delete(wishToBeDeleted)
+                    self.reloadTheTable()
+                })
+                self.dismissViewControllerAnimated(true, completion: nil)
+            })
+            alertController.addAction(cancel)
+            alertController.addAction(bought)
+            alertController.addAction(delete)
+            presentViewController(alertController, animated: true, completion: nil)
+            // }
+        }
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return openWishs.count
@@ -92,12 +129,11 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     // TableViewCell Swipe Action
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Destructive, title: "Delete") { (deleteAction, indexPath) -> Void in
+   /* func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Destructive, title: " ") { (deleteAction, indexPath) -> Void in
             
             var wishToBeDeleted : Wish!
             wishToBeDeleted = self.openWishs[indexPath.row]
-            
             try! uiRealm.write({ () -> Void in
                 uiRealm.delete(wishToBeDeleted)
                 self.reloadTheTable()
@@ -105,19 +141,10 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
             NSNotificationCenter.defaultCenter().postNotificationName("reloadStat", object: nil)
 
         }
-        let doneAction = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "Want") { (doneAction, indexPath) -> Void in
-            var wishToBeUpdated : Wish!
-            wishToBeUpdated = self.openWishs[indexPath.row]
-            
-            try! uiRealm.write({ () -> Void in
-                wishToBeUpdated.isCompleted = false
-                self.reloadTheTable()
-            })
-            NSNotificationCenter.defaultCenter().postNotificationName("reloadStat", object: nil)
+        deleteAction.backgroundColor=UIColor(patternImage: UIImage(named: "deleteBtn")!)
 
-        }
-        return [deleteAction, doneAction]
-    }
+        return [deleteAction]
+    }*/
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eDV-A7-wlQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eDV-A7-wlQ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -150,7 +150,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="bnR-7Y-LRH">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="bnR-7Y-LRH">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MRh-TU-ViQ">
@@ -352,13 +352,28 @@
                                     <outlet property="delegate" destination="6QK-qw-cZR" id="Lmz-Yq-AQa"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJ7-Xh-p0k">
+                                <rect key="frame" x="163" y="587" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="6aV-8N-al1"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="LL9-D4-0SO"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="OXF-Sb-Xmj"/>
+                                    <constraint firstAttribute="width" constant="50" id="WOe-pv-6TM"/>
+                                </constraints>
+                                <state key="normal" image="btn_plus"/>
+                                <connections>
+                                    <segue destination="Owe-2l-sFv" kind="presentation" id="ux1-Rp-Gri"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="aVq-uh-aMm" firstAttribute="top" secondItem="SfF-iQ-dpM" secondAttribute="top" id="1na-oJ-VoS"/>
                             <constraint firstItem="Art-AZ-gHE" firstAttribute="top" secondItem="aVq-uh-aMm" secondAttribute="bottom" id="6hQ-w7-H2f"/>
                             <constraint firstAttribute="trailing" secondItem="aVq-uh-aMm" secondAttribute="trailing" id="CDF-D6-Mzh"/>
+                            <constraint firstItem="bJ7-Xh-p0k" firstAttribute="centerX" secondItem="SfF-iQ-dpM" secondAttribute="centerX" id="P2O-dK-Spo"/>
                             <constraint firstItem="aVq-uh-aMm" firstAttribute="leading" secondItem="SfF-iQ-dpM" secondAttribute="leading" id="eMX-4Q-D42"/>
+                            <constraint firstItem="Art-AZ-gHE" firstAttribute="top" secondItem="bJ7-Xh-p0k" secondAttribute="bottom" constant="30" id="pK2-Lp-0AQ"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -672,17 +687,6 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJT-uc-8WJ">
-                                <rect key="frame" x="162" y="597" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="K6W-zq-QCn"/>
-                                    <constraint firstAttribute="height" constant="50" id="mRC-Bc-utn"/>
-                                </constraints>
-                                <state key="normal" image="btn_plus"/>
-                                <connections>
-                                    <segue destination="Owe-2l-sFv" kind="presentation" identifier="addSaving" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="7g3-NN-zbK"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Pit-NX-2uA">
                                 <rect key="frame" x="291" y="81" width="44" height="41"/>
                                 <subviews>
@@ -737,10 +741,8 @@
                             <constraint firstItem="HR8-se-luI" firstAttribute="top" secondItem="evI-f0-yOv" secondAttribute="top" id="C3s-yN-BDh"/>
                             <constraint firstItem="iHx-CH-xD1" firstAttribute="top" secondItem="Khx-nU-aTn" secondAttribute="bottom" id="D5K-gd-kUv"/>
                             <constraint firstItem="XKe-8b-iVj" firstAttribute="leading" secondItem="4qJ-gr-ZB8" secondAttribute="leading" id="Igt-dg-HLT"/>
-                            <constraint firstItem="5Sq-ek-gua" firstAttribute="top" secondItem="lJT-uc-8WJ" secondAttribute="bottom" constant="30" id="J5e-j0-8qw"/>
                             <constraint firstItem="Pit-NX-2uA" firstAttribute="centerY" secondItem="HR8-se-luI" secondAttribute="centerY" id="LiX-8n-QnR"/>
                             <constraint firstItem="esk-d4-Wwr" firstAttribute="leading" secondItem="4qJ-gr-ZB8" secondAttribute="leading" id="QWs-f4-W7p"/>
-                            <constraint firstItem="lJT-uc-8WJ" firstAttribute="centerX" secondItem="4qJ-gr-ZB8" secondAttribute="centerX" id="RVu-x2-m1o"/>
                             <constraint firstItem="evI-f0-yOv" firstAttribute="height" secondItem="iHx-CH-xD1" secondAttribute="height" id="S3o-S8-E1O"/>
                             <constraint firstItem="evI-f0-yOv" firstAttribute="leading" secondItem="iHx-CH-xD1" secondAttribute="trailing" constant="-6" id="WPp-O7-RZF"/>
                             <constraint firstAttribute="trailing" secondItem="XKe-8b-iVj" secondAttribute="trailing" id="XUK-hV-GCH"/>
@@ -832,7 +834,7 @@
         <image name="menuBtn" width="20" height="13"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nFt-aV-ukg"/>
-        <segue reference="7g3-NN-zbK"/>
+        <segue reference="GWA-ha-WXc"/>
+        <segue reference="ux1-Rp-Gri"/>
     </inferredMetricsTieBreakers>
 </document>

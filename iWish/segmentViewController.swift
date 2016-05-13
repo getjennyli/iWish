@@ -61,8 +61,8 @@ class segmentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      //  self.navigationController?.navigationBar.translucent = true
-       // self.navigationController?.navigationBar.clipsToBounds = true
+        self.navigationController?.navigationBar.translucent = true
+        self.navigationController?.navigationBar.clipsToBounds = true
         pageViewController = self.childViewControllers.first as! UIPageViewController
         
         wishController = storyboard?.instantiateViewControllerWithIdentifier("wishsID") as! WishListViewController
@@ -80,7 +80,7 @@ class segmentViewController: UIViewController {
         controllers.append(wishController)
         controllers.append(savingController)
         controllers.append(boughtController)
-        removeSwipeGesture()
+       // removeSwipeGesture()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadStats), name: "reloadStat", object: nil)
         //接收页面改变的通知
@@ -88,13 +88,13 @@ class segmentViewController: UIViewController {
        
     }
 
-    func removeSwipeGesture(){
+   /* func removeSwipeGesture(){
         for view in self.pageViewController!.view.subviews {
             if let subView = view as? UIScrollView {
                 subView.scrollEnabled = false
             }
         }
-    }
+    }*/
     func reloadStats(notification: NSNotification){
         datasource = uiRealm.objects(Saving)
         openWishs = uiRealm.objects(Wish).filter("isCompleted = false")

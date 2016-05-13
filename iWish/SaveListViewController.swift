@@ -24,6 +24,8 @@ class SaveListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: "longPress:")
+        self.view.addGestureRecognizer(longPressRecognizer)
         reloadTheTable()
         // Do any additional setup after loading the view.
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadTableData), name: "reload", object: nil)
@@ -70,7 +72,33 @@ class SaveListViewController: UIViewController, UITableViewDelegate, UITableView
         cell.dateLabel?.text = dateFormatter.stringFromDate(saving.date)
         return cell
     }
-    
+    func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        
+        //if longPressGestureRecognizer.state == UIGestureRecognizerState.Began {
+        
+        let touchPoint = longPressGestureRecognizer.locationInView(self.view)
+        if let indexPath = tableView.indexPathForRowAtPoint(touchPoint) {
+            let alertController = UIAlertController(title: "", message: nil, preferredStyle: .ActionSheet)
+            
+            let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) -> Void in
+                print("cancel")
+            })
+            let delete = UIAlertAction(title: "Delete", style: .Destructive, handler: { (action) -> Void in
+                var savingToBeDeleted : Saving!
+                savingToBeDeleted = self.datasource[indexPath.row]
+                
+                try! uiRealm.write({ () -> Void in
+                    uiRealm.delete(savingToBeDeleted)
+                    self.reloadTheTable()
+                })
+                NSNotificationCenter.defaultCenter().postNotificationName("reloadStat", object: nil)
+            })
+            alertController.addAction(cancel)
+            alertController.addAction(delete)
+            presentViewController(alertController, animated: true, completion: nil)
+            // }
+        }
+    }
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Destructive, title: "Delete") { (deleteAction, indexPath) -> Void in
             
